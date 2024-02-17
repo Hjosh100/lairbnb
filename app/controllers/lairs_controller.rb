@@ -1,5 +1,6 @@
 class LairsController < ApplicationController
   before_action :set_lair, only: [:show]
+  skip_before_action :authenticate_user!, only: [:show, :index]
 
   def index
     @lairs = Lair.all
