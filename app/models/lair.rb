@@ -1,0 +1,2 @@
+class Lair < ApplicationRecord
+end
