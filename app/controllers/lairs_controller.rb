@@ -13,7 +13,7 @@ class LairsController < ApplicationController
   end
 
   def create
-    @lair = Lair.new(lair_params)
+    @lair = current_user.lairs.build(lair_params)
     if @lair.save
       redirect_to lair_path(@lair)
     else
@@ -28,6 +28,6 @@ class LairsController < ApplicationController
   end
 
   def lair_params
-    params.require(:lair).permit(:title, :category, :location, :price, :photo)
+    params.require(:lair).permit(:title, :category, :location, :price, photos:[])
   end
 end
