@@ -1,12 +1,13 @@
 class LairsController < ApplicationController
   before_action :set_lair, only: [:show]
-  skip_before_action :authenticate_user!, only: [:show, :index]
+  skip_before_action :authenticate_user!, only: %i[show index]
 
   def index
     @lairs = Lair.all
   end
 
   def show
+    @booking = Booking.new
   end
 
   def new
@@ -14,7 +15,7 @@ class LairsController < ApplicationController
   end
 
   def create
-    @lair = Lair.new(lair_params)
+    @lair = current_user.lairs.build(lair_params)
     if @lair.save
       redirect_to lair_path(@lair)
     else
@@ -29,6 +30,6 @@ class LairsController < ApplicationController
   end
 
   def lair_params
-    params.require(:lair).permit(:title, :category, :location, :price, :photo)
+    params.require(:lair).permit(:title, :category, :location, :price, photos:[])
   end
 end
