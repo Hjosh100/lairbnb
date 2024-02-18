@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: %i[show edit update destroy]
-  before_action :set_lair, only: %i[show new create]
+  before_action :set_lair, only: %i[new create]
 
   def show
   end
@@ -23,11 +23,13 @@ class BookingsController < ApplicationController
   end
 
   def update
+    @booking.update(params[:accepted])
+    redirect_to booking_path(@booking)
   end
 
   def destroy
     @booking.destroy
-    redirect_to lair_path(@booking)
+    redirect_to lair_path(@booking.lair), status: :see_other
   end
 
   private
