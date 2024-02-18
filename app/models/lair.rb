@@ -3,6 +3,8 @@ class Lair < ApplicationRecord
   validates :category, presence: true, inclusion: { in: %w[island mountain countryside space underground] }
   validates :location, presence: true
   validates :price, presence: true
+
+  validates :description, presence: true
   has_many_attached :photos
   belongs_to :user
   has_many :bookings

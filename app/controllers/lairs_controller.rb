@@ -1,11 +1,13 @@
 class LairsController < ApplicationController
   before_action :set_lair, only: [:show]
+  skip_before_action :authenticate_user!, only: %i[show index]
 
   def index
     @lairs = Lair.all
   end
 
   def show
+    @booking = Booking.new
   end
 
   def new
