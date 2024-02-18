@@ -9,8 +9,10 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   resources :lairs, only: %i[index show new create] do
-    resources :bookings, except: %i[index]
+    resources :bookings, only: %i[show new create destroy]
   end
+
+  patch "lair/:id/booking/:id", to: "bookings#confirm"
 
   # Defines the root path route ("/")
   # root "posts#index"
