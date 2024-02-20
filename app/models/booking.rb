@@ -1,6 +1,6 @@
 class Booking < ApplicationRecord
   validates :date, presence: true
-  attr_accessible :accepted
+  attr_accessor :accepted
   belongs_to :user
   belongs_to :lair
 
