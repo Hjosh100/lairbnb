@@ -14,7 +14,7 @@
   <div class = "lair_info my-3 border-top col-12 mx-auto">
     <h3 class= "border-bottom col-6 mx-auto"><%= @lair.title %></h3>
     <% @lair.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, width: 300, class: "small-photo"  %>
+      <%= cl_image_tag photo.key, width: 300, height: 300, class: "small-photo"  %>
     <% end %>
     <h3><%= @lair.description %></h3>
     <h3>Price: <%= @lair.price %></h3>
