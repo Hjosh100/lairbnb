@@ -15,6 +15,7 @@
         <td><%= booking.lair.name %></td>
         <td><%= booking.date.strftime("%Y-%m-%d") %></td>
         <td><%= booking.accepted ? "Confirmed" : "Pending" %></td>
+        <td><%= booking.booking_id %></td>
         <td>
           <% if booking.accepted %>
             <%= link_to "Cancel", confirmation_booking_path(booking), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" %>
