@@ -1,6 +1,10 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: %i[show confirm destroy]
-  before_action :set_lair, only: %i[new create]
+  before_action :set_lair, only: %i[index new create]
+
+  def index
+    @bookings = Booking.all
+  end
 
   def show
   end
@@ -37,7 +41,7 @@ class BookingsController < ApplicationController
   end
 
   def set_lair
-    @lair = Lair.find(params(:lair_id))
+    @lair = Lair.find(params[:lair_id])
   end
 
   def booking_params
