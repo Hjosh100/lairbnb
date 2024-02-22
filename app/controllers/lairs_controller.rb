@@ -4,6 +4,13 @@ class LairsController < ApplicationController
 
   def index
     @lairs = Lair.all
+     # The `geocoded` scope filters only lairs with coordinates
+    @markers = @lairs.geocoded.map do |lair|
+      {
+        lat: lair.latitude,
+        lng: lair.longitude
+      }
+    end
   end
 
   def show
