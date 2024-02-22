@@ -10,4 +10,11 @@
     <h3>Category: <%= @lair.category %></h3>
     <h3>Villan: <%= @lair.user.first_name %> <%= @lair.user.last_name %></h3>
   </div>
+  <div style="width: 100%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+  <div class = "booking">
+    <%= link_to new_lair_booking_path(lair_id: @lair.id) %>
+  </div>
 </div>

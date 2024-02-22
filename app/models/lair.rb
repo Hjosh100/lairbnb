@@ -1,6 +1,6 @@
 class Lair < ApplicationRecord
   geocoded_by :location
-  after_validation :geocode, if: :will_save_change_to_address?
+  after_validation :geocode, if: :will_save_change_to_location?
 
   validates :title, presence: true
   validates :category, presence: true, inclusion: { in: %w[island mountain countryside space underground] }
