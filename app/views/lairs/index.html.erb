@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Lairbnb Lairs</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+  <h1 class="text-center my-4">All Lairbnb Lairs</h1>
+
+  <div class="row">
+    <% @lairs.each do |lair| %>
+      <div class="col-md-6 mb-4">
+        <div class="card">
+          <!-- Lair photo carousel -->
+          <div id="carousel<%= lair.id %>" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <% lair.photos.each_with_index do |photo, index| %>
+                <div class="carousel-item <%= 'active' if index.zero? %>">
+                  <%= cl_image_tag photo.key, class: "d-block w-100" %>
+                </div>
+              <% end %>
+            </div>
+            <a class="carousel-control-prev" href="#carousel<%= lair.id %>" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carousel<%= lair.id %>" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"><%= lair.title %></h5>
+            <p class="card-text"><strong>Description:</strong> <%= lair.description %></p>
+            <p class="card-text"><strong>Price:</strong> <%= lair.price %></p>
+            <p class="card-text"><strong>Location:</strong> <%= lair.location %></p>
+            <p class="card-text"><strong>Category:</strong> <%= lair.category %></p>
+            <p class="card-text"><strong>Villain:</strong> <%= lair.user.first_name %> <%= lair.user.last_name %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
