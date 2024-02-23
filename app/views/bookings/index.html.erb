@@ -16,5 +16,9 @@
         <p>Villain: <%= booking.lair.user.first_name %> <%= booking.lair.user.last_name %></p>
       </p>
     <% end %>
+
+    <% @user.lair.booking.each do |booking| %>
+      <%= booking.user.name %>
+    <% end %>
   </div>
 </div>
