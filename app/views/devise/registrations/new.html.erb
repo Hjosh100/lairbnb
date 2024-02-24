@@ -1,7 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign up</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .btn-custom {
+      background-color: white;
+      color: black;
+      border-color: black;
+    }
+
+    .btn-custom:hover {
+      background-color: #f8f9fa; /* A slightly different shade of white */
+      color: white;
+      border-color: #f8f9fa;
+    }
+  </style>
+</head>
+<body>
+
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-12 col-lg-6">
-
       <h2>Sign up</h2>
 
       <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -26,15 +48,21 @@
                       required: true,
                       input_html: { autocomplete: "new-password" } %>
         </div>
-      <div class="row">
-        <div class="col-4 col-lg-2 mx-4">
-          <div class="form-actions btn btn-primary">
-            <%= f.button :submit, "Sign up" %>
+        <div class="row">
+          <div class="col-4 col-lg-2 mx-4">
+            <div class="form-actions">
+              <%= f.button :submit, "Sign up", class: "btn btn-custom" %>
+            </div>
           </div>
-          <% end %>
         </div>
-        <%= render "devise/shared/links" %>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
