@@ -82,7 +82,7 @@
 
     <div class="col-md-4">
       <div class="text-center mt-4">
-        <%= link_to "Book", new_booking_path(lair_id: @lair.id), class: "btn btn-custom" %>
+            <%= link_to 'New booking', new_lair_booking_path(@lair, @booking), class: "btn btn-custom" %>
       </div>
     </div>
   </div>
