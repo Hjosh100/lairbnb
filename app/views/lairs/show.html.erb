@@ -88,8 +88,9 @@
       <div class="text-center mt-4">
         <%= link_to "Delete", lair_path(@lair),
             method: :delete,
-            data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
 
+            data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-custom"
+        %>
       </div>
     </div>
   </div>

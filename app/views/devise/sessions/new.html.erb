@@ -7,15 +7,27 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <style>
     .btn-custom {
-      background-color: white;
-      color: black;
-      border-color: black;
+      background-color: #F0F0F0; /* Light gray */
+      color: #333; /* Dark gray text */
+      border-color: #333; /* Dark gray border */
+      transition: background-color 0.3s, color 0.3s; /* Smooth transition on hover */
+      margin-right: 10px; /* Spacing between buttons */
+      flex-grow: 1; /* Allow buttons to stretch */
     }
 
     .btn-custom:hover {
-      background-color: #f8f9fa; /* A slightly different shade of white */
-      color: white;
-      border-color: #f8f9fa;
+      background-color: #0056b3; /* Dark blue color on hover */
+      color: white; /* White text on hover */
+    }
+
+    /* Forgot password link styles */
+    .forgot-password-link {
+      color: #333; /* Dark gray text */
+      transition: color 0.3s; /* Smooth transition on hover */
+    }
+
+    .forgot-password-link:hover {
+      color: #0056b3; /* Dark blue text on hover */
     }
   </style>
 </head>
@@ -35,12 +47,19 @@
           <%= f.input :password,
                       required: false,
                       input_html: { autocomplete: "current-password" } %>
+
+          <!-- Forgot password link -->
+          <div class="text-right mb-3">
+            <%= link_to "Forgot password?", new_user_password_path, class: "forgot-password-link" %>
+          </div>
+
           <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
         </div>
         <div class="row">
-          <div class="col-4 col-lg-2 mx-4">
-            <div class="form-actions">
+          <div class="col-12 d-flex justify-content-between">
+            <div class="form-actions d-flex">
               <%= f.button :submit, "Log in", class: "btn btn-custom" %>
+              <a href="<%= new_user_registration_path %>" class="btn btn-custom">Sign Up</a>
             </div>
           </div>
         </div>
