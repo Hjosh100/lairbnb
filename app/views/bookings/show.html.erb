@@ -3,17 +3,18 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>Lair</th>
-      <th>Date</th>
+      <th>Title</th>
+      <th>Start_date</th>
+      <th>End_date</th>
       <th>Status</th>
       <th>Actions</th>
     </tr>
   </thead>
   <tbody>
-    <% @bookings.each do |booking| %>
       <tr>
-        <td><%= booking.lair.name %></td>
-        <td><%= booking.date.strftime("%Y-%m-%d") %></td>
+        <td><%= booking.lair.title %></td>
+       <td><%= booking.start_date.strftime("%Y-%m-%d") %></td>
+       <td><%= booking.end_date.strftime("%Y-%m-%d") %></td>
         <td><%= booking.accepted ? "Confirmed" : "Pending" %></td>
         <td><%= booking.booking_id %></td>
         <td>
@@ -24,6 +25,5 @@
           <% end %>
         </td>
       </tr>
-    <% end %>
   </tbody>
 </table>
