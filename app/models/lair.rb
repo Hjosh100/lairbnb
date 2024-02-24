@@ -10,6 +10,6 @@ class Lair < ApplicationRecord
   validates :description, presence: true
   has_many_attached :photos
   belongs_to :user
-  has_many :bookings
+  has_many :bookings, dependent: :destroy
   has_many :users, through: :bookings
 end
