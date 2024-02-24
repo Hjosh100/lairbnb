@@ -9,15 +9,15 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   resources :users do
-    resources :bookings, only: %i[index]
-  end
-
-  resources :lairs, only: %i[index show new create] do
-    resources :bookings, except: %i[edit update] do
+    resources :bookings, only: %i[index] do
       collection do
         get :renter_index
       end
     end
+  end
+
+  resources :lairs, only: %i[index show new create] do
+    resources :bookings, except: %i[edit update]
   end
 
   patch "lair/:id/booking/:id", to: "bookings#confirm", as: "confirmation_booking"

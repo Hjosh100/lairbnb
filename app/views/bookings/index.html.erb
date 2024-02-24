@@ -1,13 +1,13 @@
-<h1 class="ms-3 mb-2">Your bookings</h1>
+<h1 class="ms-3 mb-2">Bookings made</h1>
 <div class="container d-flex justify-content-center">
-  <div class="m-2 p-2 bg-white w-25 rounded-5">
-    <% @bookings.each do |booking| %>
-      <% if booking.user_id != booking.lair.user_id %>
+  <% @user.bookings.each do |booking| %>
+    <%# <% if booking.user == @user.id %>
+      <div class="m-2 p-2 bg-white w-25 rounded-5">
         <h2><%= booking.date %></h2>
         <p><%= "Accepted" if booking.accepted %></p>
         <p>
           <h4><%= booking.lair.title %></h4>
-          <% @lair.photos.each do |photo| %>
+          <% booking.lair.photos.each do |photo| %>
             <%= cl_image_tag photo.key, width: 300, height: 300, class: "small-photo"  %>
           <% end %>
           <p><%= booking.lair.description %></p>
@@ -16,7 +16,7 @@
           <p>Category: <%= booking.lair.category %></p>
           <p>Villain: <%= booking.lair.user.first_name %> <%= booking.lair.user.last_name %></p>
         </p>
-      <% end %>
-    <% end %>
-  </div>
+      </div>
+    <%# <% end %>
+  <% end %>
 </div>
