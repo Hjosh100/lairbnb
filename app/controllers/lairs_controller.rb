@@ -1,5 +1,5 @@
 class LairsController < ApplicationController
-  before_action :set_lair, only: [:show]
+  before_action :set_lair, only: [:show, :destroy]
   skip_before_action :authenticate_user!, only: %i[show index]
 
   def index
@@ -28,6 +28,11 @@ class LairsController < ApplicationController
     else
       render 'new', status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @lair.destroy
+    redirect_to root_path, status: :see_other
   end
 
   private
