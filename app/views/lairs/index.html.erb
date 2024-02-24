@@ -9,7 +9,7 @@
   <style>
     .lair-title {
       font-weight: bold;
-      color: red;
+      color: black;
     }
     .lair-price {
       font-weight: bold;
@@ -41,4 +41,23 @@
             </a>
             <a class="carousel-control-next" href="#carousel<%= lair.id %>" role="button" data-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title lair-title"><%= lair.title %></h5>
+            <p class="card-text"><strong>Description:</strong> <%= lair.description %></p>
+            <p class="card-text"><strong>Price:</strong> <span class="lair-price"><%= lair.price %></span></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
