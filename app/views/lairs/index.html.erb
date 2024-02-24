@@ -26,8 +26,15 @@
     }
 
     .btn-custom:hover {
-      background-color: #eaeaea; /
+      background-color: #eaeaea;
       color: #333;
+    }
+
+    /* Adjust button position */
+    .btn-container {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
     }
   </style>
 </head>
@@ -39,7 +46,7 @@
   <div class="row">
     <% @lairs.each do |lair| %>
       <div class="col-md-6 mb-4">
-        <div class="card">
+        <div class="card position-relative"> <!-- Add position-relative class to make position:absolute work -->
           <!-- Lair photo carousel -->
           <div id="carousel<%= lair.id %>" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
@@ -60,8 +67,10 @@
           </div>
           <div class="card-body">
             <h5 class="card-title lair-title"><%= lair.title %></h5>
-            <%= link_to "View Lair", lair_path(lair), class: "btn btn-custom" %>
             <p class="card-text"><strong>Price:</strong> <span class="lair-price"><%= lair.price %></span></p>
+            <div class="btn-container">
+              <%= link_to "View Lair", lair_path(lair), class: "btn btn-custom" %>
+            </div>
           </div>
         </div>
       </div>
