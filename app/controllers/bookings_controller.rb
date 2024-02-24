@@ -47,6 +47,5 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:lair_id, :start_date, :end_date, :accepted)
-ster
   end
 end
