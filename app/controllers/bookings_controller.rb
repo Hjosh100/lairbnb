@@ -10,7 +10,7 @@ class BookingsController < ApplicationController
   end
 
   def new
-    @lair = Lair.new
+    @booking = Booking.new
   end
 
   def create
@@ -45,6 +45,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:lair_id, :date)
+    params.require(:booking).permit(:lair_id, :date, :accepted)
   end
 end
