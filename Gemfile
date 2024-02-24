@@ -2,8 +2,11 @@ source "https://rubygems.org"
 
 ruby "3.1.2"
 
-#Kieran added the devise gem, didn't I just
+#Kieran added the devise gem
 gem "devise"
+
+#Kieran added the geocode gem
+gem "geocoder"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3"

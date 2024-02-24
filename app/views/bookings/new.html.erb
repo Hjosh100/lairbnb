@@ -1,0 +1,6 @@
+<h1>New Booking</h1>
+
+<%= simple_form_for([@lair, @booking]) do |f| %>
+  <%= f.input :date %>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>
