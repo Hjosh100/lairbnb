@@ -27,7 +27,7 @@ class BookingsController < ApplicationController
   def confirm
     @booking.lair = @lair
     @booking.update_attribute(accepted: true)
-    redirect_to lair_path(@lair)
+    redirect_to lair_path(@lair), status: :see_other
   end
 
   def destroy
