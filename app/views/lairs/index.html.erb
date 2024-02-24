@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="styles.css">
   <style>
     .carousel-item img {
-      height: 400px; /* Adjust the height as needed */
+      height: 400px;
     }
     .lair-title {
       font-weight: bold;
@@ -17,6 +17,17 @@
     .lair-price {
       font-weight: bold;
       color: red;
+    }
+
+    .btn-custom {
+      background-color: #f4f4f4;
+      color: #333;
+      border-color: #ccc;
+    }
+
+    .btn-custom:hover {
+      background-color: #eaeaea; /
+      color: #333;
     }
   </style>
 </head>
@@ -49,6 +60,7 @@
           </div>
           <div class="card-body">
             <h5 class="card-title lair-title"><%= lair.title %></h5>
+            <%= link_to "View Lair", lair_path(lair), class: "btn btn-custom" %>
             <p class="card-text"><strong>Price:</strong> <span class="lair-price"><%= lair.price %></span></p>
           </div>
         </div>
