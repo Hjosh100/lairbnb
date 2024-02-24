@@ -19,9 +19,9 @@
         <td><%= @booking.id %></td>
         <td>
           <% if @booking.accepted %>
-            <%= link_to "Cancel", confirmation_booking_path(@booking), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" %>
+            <%= link_to "Cancel", confirm_lair_booking_path(@booking), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" %>
           <% else %>
-            <%= link_to "Confirm", confirmation_booking_path(@booking), method: :patch, class: "btn btn-sm btn-success" %>
+            <%= link_to "Confirm", confirm_lair_booking_path(@booking), method: :patch, class: "btn btn-sm btn-success" %>
           <% end %>
         </td>
       </tr>
