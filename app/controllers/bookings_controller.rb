@@ -16,8 +16,9 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.lair = @lair
-    if @booking.save
-      redirect_to lair_path(@lair)
+    @booking.user = current_user
+    if @booking.save!
+      redirect_to lair_booking_path(@lair, @booking)
     else
       render 'new', status: :unprocessable_entity
     end
