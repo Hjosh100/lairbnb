@@ -3,25 +3,25 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Start_date</th>
-      <th>End_date</th>
+      <th>Lair</th>
+      <th>Start date</th>
+      <th>End date</th>
       <th>Status</th>
-      <th>Actions</th>
+      <th>Booking ID</th>
     </tr>
   </thead>
   <tbody>
       <tr>
-        <td><%= booking.lair.title %></td>
-       <td><%= booking.start_date.strftime("%Y-%m-%d") %></td>
-       <td><%= booking.end_date.strftime("%Y-%m-%d") %></td>
-        <td><%= booking.accepted ? "Confirmed" : "Pending" %></td>
-        <td><%= booking.booking_id %></td>
+        <td><%= @booking.lair.title %></td>
+        <td><%= @booking.start_date.strftime("%Y-%m-%d") %></td>
+        <td><%= @booking.end_date.strftime("%Y-%m-%d") %></td>
+        <td><%= @booking.accepted ? "Confirmed" : "Pending" %></td>
+        <td><%= @booking.id %></td>
         <td>
-          <% if booking.accepted %>
-            <%= link_to "Cancel", confirmation_booking_path(booking), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" %>
+          <% if @booking.accepted %>
+            <%= link_to "Cancel", confirmation_booking_path(@booking), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" %>
           <% else %>
-            <%= link_to "Confirm", confirmation_booking_path(booking), method: :patch, class: "btn btn-sm btn-success" %>
+            <%= link_to "Confirm", confirmation_booking_path(@booking), method: :patch, class: "btn btn-sm btn-success" %>
           <% end %>
         </td>
       </tr>
