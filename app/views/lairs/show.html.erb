@@ -1,20 +1,96 @@
-<div class = "container">
-  <div class = "lair_info my-3 border-top col-12 mx-auto">
-    <h3 class= "border-bottom col-6 mx-auto"><%= @lair.title %></h3>
-    <% @lair.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, width: 300, height: 300, class: "small-photo"  %>
-    <% end %>
-    <h3><%= @lair.description %></h3>
-    <h3>Price: <%= @lair.price %></h3>
-    <h3>Location: <%= @lair.location %></h3>
-    <h3>Category: <%= @lair.category %></h3>
-    <h3>Villan: <%= @lair.user.first_name %> <%= @lair.user.last_name %></h3>
-  </div>
-  <div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-  <div class = "booking">
-    <%= link_to new_lair_booking_path(lair_id: @lair.id) %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Show Lair</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .lair-title {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .carousel-item img {
+      max-height: 500px;
+      object-fit: cover;
+    }
+    .lair-details {
+      margin-top: 30px;
+    }
+    .lair-details h2 {
+      font-size: 24px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    .lair-details p {
+      font-size: 18px;
+      line-height: 1.5;
+    }
+    .btn-custom {
+      background-color: #f4f4f4;
+      color: #333;
+      border-color: #ccc;
+    }
+    .btn-custom:hover {
+      background-color: #eaeaea;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h1 class="text-center lair-title"><%= @lair.title %></h1>
+
+      <div id="carouselLair" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <% @lair.photos.each_with_index do |photo, index| %>
+            <div class="carousel-item <%= 'active' if index.zero? %>">
+              <%= cl_image_tag photo.key, class: "d-block w-100 img-fluid" %>
+            </div>
+          <% end %>
+        </div>
+        <a class="carousel-control-prev" href="#carouselLair" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselLair" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+
+      <!-- Lair Details -->
+      <div class="lair-details">
+        <h2>Description:</h2>
+        <p><%= @lair.description %></p>
+        <h2>Price:</h2>
+        <p><%= @lair.price %></p>
+        <h2>Location:</h2>
+        <p><%= @lair.location %></p>
+        <h2>Category:</h2>
+        <p><%= @lair.category %></p>
+        <h2>Villain:</h2>
+        <p><%= @lair.user.first_name %> <%= @lair.user.last_name %></p>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="text-center mt-4">
+        <%= link_to "Book", new_booking_path(lair_id: @lair.id), class: "btn btn-custom" %>
+      </div>
+    </div>
   </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
