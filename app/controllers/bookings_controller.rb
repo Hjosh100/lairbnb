@@ -10,7 +10,7 @@ class BookingsController < ApplicationController
   end
 
   def new
-    @lair = Lair.new
+    @booking = Booking.new
   end
 
   def create
@@ -25,7 +25,7 @@ class BookingsController < ApplicationController
 
   def confirm
     @booking.lair = @lair
-    @booking.update_attibute(accepted: true)
+    @booking.update_attribute(accepted: true)
     redirect_to lair_path(@lair)
   end
 
@@ -37,7 +37,7 @@ class BookingsController < ApplicationController
   private
 
   def set_booking
-    @booking = Booking.find(:id)
+    @booking = Booking.find(params[:id])
   end
 
   def set_lair
@@ -45,6 +45,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:lair_id, :date)
+    params.require(:booking).permit(:lair_id, :start_date, :end_date, :accepted)
   end
 end
