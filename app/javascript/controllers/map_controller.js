@@ -12,7 +12,7 @@ export default class extends Controller {
 
     this.map = new mapboxgl.Map({
       container: this.element,
-      style: "mapbox://styles/mapbox/streets-v10",
+      style: "mapbox://styles/konsite/clt06a02r003t01p82ysrcz93",
     });
 
     this.#addMarkersToMap();
