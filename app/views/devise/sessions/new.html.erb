@@ -10,12 +10,22 @@
       background-color: white;
       color: black;
       border-color: black;
+      transition: background-color 0.3s, color 0.3s; /* Smooth transition on hover */
     }
 
     .btn-custom:hover {
-      background-color: #f8f9fa; /* A slightly different shade of white */
-      color: white;
-      border-color: #f8f9fa;
+      background-color: #007bff; /* Blue color on hover */
+      color: white; /* White text on hover */
+    }
+
+    /* Forgot password link styles */
+    .forgot-password-link {
+      color: black; /* Black text */
+      transition: color 0.3s; /* Smooth transition on hover */
+    }
+
+    .forgot-password-link:hover {
+      color: white; /* White text on hover */
     }
   </style>
 </head>
@@ -40,11 +50,19 @@
         <div class="row">
           <div class="col-4 col-lg-2 mx-4">
             <div class="form-actions">
-              <%= f.button :submit, "Log in", class: "btn btn-custom" %>
+              <div class="d-flex">
+                <%= f.button :submit, "Log in", class: "btn btn-custom" %>
+                <a href="<%= new_user_registration_path %>" class="btn btn-custom ml-2">Sign Up</a>
+              </div>
             </div>
           </div>
         </div>
       <% end %>
+
+      <!-- Forgot password link -->
+      <div class="text-center mt-3">
+        <%= link_to "Forgot password?", new_user_password_path, class: "forgot-password-link" %>
+      </div>
     </div>
   </div>
 </div>
