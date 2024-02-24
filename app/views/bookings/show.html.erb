@@ -1,29 +1,74 @@
-<h1>Bookings</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Show Lair</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .lair-title {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .carousel-item img {
+      max-height: 400px;
+      object-fit: cover;
+    }
+    .lair-details {
+      margin-top: 30px;
+    }
+    .lair-details h2 {
+      font-size: 20px;
+      margin-top: 20px;
+      margin-bottom: 10px;
+    }
+    .lair-details p {
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
 
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Lair</th>
-      <th>Start date</th>
-      <th>End date</th>
-      <th>Status</th>
-      <th>Booking ID</th>
-    </tr>
-  </thead>
-  <tbody>
-      <tr>
-        <td><%= @booking.lair.title %></td>
-        <td><%= @booking.start_date.strftime("%Y-%m-%d") %></td>
-        <td><%= @booking.end_date.strftime("%Y-%m-%d") %></td>
-        <td><%= @booking.accepted ? "Confirmed" : "Pending" %></td>
-        <td><%= @booking.id %></td>
-        <td>
-          <% if @booking.accepted %>
-            <%= link_to "Cancel", confirmation_booking_path(@booking), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" %>
-          <% else %>
-            <%= link_to "Confirm", confirmation_booking_path(@booking), method: :patch, class: "btn btn-sm btn-success" %>
-          <% end %>
-        </td>
-      </tr>
-  </tbody>
-</table>
+<div class="container">
+  <h1 class="text-center lair-title"><%= @lair.title %></h1>
+
+  <div id="carouselLair" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <% @lair.photos.each_with_index do |photo, index| %>
+        <div class="carousel-item <%= 'active' if index.zero? %>">
+          <%= cl_image_tag photo.key, class: "d-block w-100 img-fluid" %>
+        </div>
+      <% end %>
+    </div>
+    <a class="carousel-control-prev" href="#carouselLair" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselLair" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+  <!-- Lair Details -->
+  <div class="lair-details">
+    <h2>Description:</h2>
+    <p><%= @lair.description %></p>
+    <h2>Price:</h2>
+    <p><%= @lair.price %></p>
+    <h2>Location:</h2>
+    <p><%= @lair.location %></p>
+    <h2>Category:</h2>
+    <p><%= @lair.category %></p>
+    <h2>Villain:</h2>
+    <p><%= @lair.user.first_name %> <%= @lair.user.last_name %></p>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
