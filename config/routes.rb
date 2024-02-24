@@ -13,7 +13,11 @@ Rails.application.routes.draw do
   end
 
   resources :lairs, only: %i[index show new create] do
-    resources :bookings, except: %i[edit update]
+    resources :bookings, except: %i[edit update] do
+      collection do
+        get :renter_index
+      end
+    end
   end
 
   patch "lair/:id/booking/:id", to: "bookings#confirm", as: "confirmation_booking"
