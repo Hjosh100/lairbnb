@@ -16,12 +16,17 @@ Rails.application.routes.draw do
     end
   end
 
+<<<<<<< HEAD
   resources :lairs, only: %i[index show new create] do
     resources :bookings, except: %i[edit update] do
       member do
         patch :confirm
       end
     end
+=======
+  resources :lairs, only: %i[index show new create destroy] do
+    resources :bookings, except: %i[edit update]
+>>>>>>> master
   end
 
   # patch "lair/:id/booking/:id", to: "bookings#confirm", as: "confirmation_booking"
