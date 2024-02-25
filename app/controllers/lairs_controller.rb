@@ -3,26 +3,30 @@ class LairsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show index]
 
   def index
-    @lairs = Lair.all
-     # The `geocoded` scope filters only lairs with coordinates
+    @lairs = policy_scope(Lair)
+    # The `geocoded` scope filters only lairs with coordinates
     @markers = @lairs.geocoded.map do |lair|
       {
         lat: lair.latitude,
         lng: lair.longitude
       }
     end
+    authorize @lairs
   end
 
   def show
+    authorize @lair
     @booking = Booking.new
   end
 
   def new
     @lair = Lair.new
+    authorize @lair
   end
 
   def create
     @lair = current_user.lairs.build(lair_params)
+    authorize @lair
     if @lair.save
       redirect_to lair_path(@lair)
     else
