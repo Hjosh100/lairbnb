@@ -1,13 +1,16 @@
-class LairPolicy < ApplicationPolicy
+class BookingPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
-     def resolve
-       scope.all
-     end
-
+    def resolve
+      scope.all
+    end
   end
 
   def index?
+    return true
+  end
+
+  def renter_index?
     return true
   end
 
@@ -23,8 +26,15 @@ class LairPolicy < ApplicationPolicy
     return true
   end
 
+  def confirm?
+    return true
+  end
+
   def destroy?
     record.user == user
   end
 
+  def show_no_bookings?
+    record.none? { |booking| booking.lair.user == user }
+  end
 end

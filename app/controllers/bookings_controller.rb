@@ -4,22 +4,29 @@ class BookingsController < ApplicationController
   before_action :set_booking_all, only: %i[index renter_index]
 
   def index
+    @bookings = policy_scope(Booking)
+
   end
 
   def renter_index
+    authorize @bookings
+    @bookings_for_user_lairs = Booking.joins(:lair).where(lairs: { user_id: current_user.id })
   end
 
   def show
+    authorize @booking
   end
 
   def new
     @booking = Booking.new
+    authorize @booking
   end
 
   def create
     @booking = Booking.new(booking_params)
     @booking.lair = @lair
     @booking.user = current_user
+    authorize @booking
     if @booking.save!
       redirect_to lair_booking_path(@lair, @booking)
     else
@@ -28,12 +35,14 @@ class BookingsController < ApplicationController
   end
 
   def confirm
+    authorize @booking
     @booking.lair = @lair
     @booking.update_attribute(accepted: true)
     redirect_to lair_path(@lair), status: :see_other
   end
 
   def destroy
+    authorize @booking
     @booking.destroy
     redirect_to lair_path(@booking.lair), status: :see_other
   end

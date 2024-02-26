@@ -86,10 +86,12 @@
         <%= link_to "Book", new_lair_booking_path(@lair, @booking), class: "btn btn-custom" %>
       </div>
       <div class="text-center mt-4">
-        <%= link_to "Delete", lair_path(@lair),
-            method: :delete,
-            data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-custom"
-        %>
+        <% if policy(@lair).destroy?  %>
+          <%= link_to "Delete", lair_path(@lair),
+              method: :delete,
+              data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-custom"
+          %>
+        <% end %>
       </div>
     </div>
   </div>
