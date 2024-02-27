@@ -8,6 +8,12 @@ gem "devise"
 #Kieran added the geocode gem
 gem "geocoder"
 
+#Josh added the pundit gem
+gem "pundit"
+
+#Josh added the pg_search gem
+gem "pg_search"
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3"
 
