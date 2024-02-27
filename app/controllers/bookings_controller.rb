@@ -29,8 +29,9 @@ class BookingsController < ApplicationController
 
   def confirm
     @booking.lair = @lair
-    @booking.update_attribute(accepted: true)
-    redirect_to lair_path(@lair), status: :see_other
+    @booking.accepted == false ? @booking.update(accepted: true) : @booking.update(accepted: false)
+    # redirect_to lair_booking_path(@booking)
+    redirect_to renter_index_user_bookings_path(current_user), status: :see_other
   end
 
   def destroy
@@ -50,6 +51,10 @@ class BookingsController < ApplicationController
 
   def set_booking_all
     @bookings = Booking.all
+  end
+
+  def accept_params
+    params.require(:booking).permit(:accept)
   end
 
   def booking_params

@@ -1,25 +1,32 @@
 <h1 class="ms-3 mb-2">Bookings to accept</h1>
-<div class="container d-flex justify-content-center">
+<div class="container d-flex justify-content-center flex-wrap" data-controller="accept">
   <% current_user.lairs.each do |lair| %>
     <% lair.bookings.each do |booking| %>
-      <%# <% if booking.user_id == booking.lair.user_id %>
-        <div class="m-2 p-2 bg-white w-25 rounded-5">
-          <h2><%= booking.user.first_name %> <%= booking.user.last_name %></h2>
-          <p>
-            <h4><%= booking.lair.title %></h4>
-            <% lair.photos.each do |photo| %>
-              <%= cl_image_tag photo.key, width: 300, height: 300, class: "small-photo"  %>
-            <% end %>
-            <p><%= booking.lair.description %></p>
-            <p>Start date:<%= booking.start_date %></p>
-            <p>Finsh date:<%= booking.end_date %></p>
-            <p>Price: <%= booking.lair.price %></p>
-            <p>Location: <%= booking.lair.location %></p>
-            <p>Category: <%= booking.lair.category %></p>
-            <button class="btn btn-primary", data-controller="accept", data_action="click->button#accept"></button>
-          </p>
-        </div>
-      <%# <% end %>
+      <div class="m-2 p-2 bg-white rounded-5" style="width: 350px;" data-accept-target="booking">
+        <h2><%= booking.user.first_name %> <%= booking.user.last_name %></h2>
+        <div>
+          <h4><%= booking.lair.title %></h4>
+          <% lair.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, width: 300, height: 300, class: "small-photo" %>
+          <% end %>
+          <p><%= booking.lair.description %></p>
+          <p><%= booking.id %></p>
+          <p>Start date:<%= booking.start_date %></p>
+          <p>Finsh date:<%= booking.end_date %></p>
+          <p>Price: <%= booking.lair.price %></p>
+          <p>Location: <%= booking.lair.location %></p>
+          <p>Category: <%= booking.lair.category %></p>
+          <p><%= booking.accepted %></p>
+          <%# <button data-accept-target="accept", data-action="click->accept#confirm" class="btn btn-primary">Accept</button> , method: :patch, class: "btn btn-primary" %>
+          <% if booking.accepted == false %>
+            <%= link_to("Accept", lair_booking_path(booking.lair, booking), class: "btn btn-primary") %>
+            <%# <input type="submit", data_turbo_method="patch"> %>
+            <div>
+              <%# <button type="submit" data-accept-target="accept", data-action="submit->accept#confirm">Accept</button> %>
+              <%# <%= button_to("Accept", data: { accept_target: "accept", action: "click->" }) %>
+            </div>
+          <% end %>
+      </div>
     <% end %>
   <% end %>
 </div>

@@ -1,0 +1,4 @@
+<%= simple_form_for booking.lair, data: { accept_target: "accept", action: "submit->accept#confirm" } do |f| %>
+  <%= f.hidden_field :accepted, value: @sbooking.accepted %>
+  <%= f.button :submit %>
+<% end %>
