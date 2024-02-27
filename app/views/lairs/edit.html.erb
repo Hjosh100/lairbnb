@@ -1,0 +1,19 @@
+<div class = "container">
+
+  <div class="info text-center p-5">
+    <h3>edit your Lair to Lairbnb</h3>
+  </div>
+
+  <div class="new_lair_form p-5 mt-2 mx-auto border rounded">
+    <%= simple_form_for(@lair) do |f| %>
+      <%= f.input :title, placeholder: "Enter your Lairs name", label: "Lair's name"%>
+      <%= f.input :description, placeholder: "Enter details of your lair" %>
+      <%= f.input :location, placeholder: "Enter your Lairs location" %>
+      <%= f.input :category, collection: %w[island mountain countryside space underground], prompt: "Select a category" %>
+      <%= f.input :price, placeholder: "Cost per night" %>
+      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>
