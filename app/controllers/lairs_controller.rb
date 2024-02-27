@@ -6,7 +6,7 @@ class LairsController < ApplicationController
     @lairs = policy_scope(Lair)
     # the search query for the search bar
     if params[:query].present?
-      @lairs = Lair.search_by_lair(params[:query])
+      @lairs = Lair.global_search(params[:query])
     else
       @lairs = Lair.all
     end
