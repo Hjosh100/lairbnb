@@ -36,10 +36,7 @@ class BookingsController < ApplicationController
 
   def confirm
     authorize @booking
-    # @booking.lair = @lair
     @booking.accepted ? @booking.update(accepted: false) : @booking.update(accepted: true)
-    # @booking.update(accepted: true)
-    # redirect_to lair_booking_path(@booking)
     redirect_to renter_index_user_bookings_path(current_user), status: :see_other
   end
 
