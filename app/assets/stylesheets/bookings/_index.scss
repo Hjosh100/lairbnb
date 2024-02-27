@@ -1,0 +1,21 @@
+.card-container {
+  width: 100%;
+}
+
+@media (min-width: 576px) {
+  .card-container {
+    width: 48%; /* Two cards per row on small screens */
+  }
+}
+
+@media (min-width: 768px) {
+  .card-container {
+    width: 31%; /* Three cards per row on medium screens */
+  }
+}
+
+@media (min-width: 992px) {
+  .card-container {
+    width: 23%; /* Four cards per row on large screens */
+  }
+}
