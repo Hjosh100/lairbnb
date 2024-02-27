@@ -14,7 +14,9 @@ class LairsController < ApplicationController
     @markers = @lairs.geocoded.map do |lair|
       {
         lat: lair.latitude,
-        lng: lair.longitude
+        lng: lair.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {lair: lair}),
+        marker_html: render_to_string(partial: "marker")
       }
     end
     authorize @lairs
