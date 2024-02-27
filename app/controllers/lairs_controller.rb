@@ -4,6 +4,12 @@ class LairsController < ApplicationController
 
   def index
     @lairs = policy_scope(Lair)
+    # the search query for the search bar
+    if params[:query].present?
+      @lairs = Lair.search_by_lair(params[:query])
+    else
+      @lairs = Lair.all
+    end
     # The `geocoded` scope filters only lairs with coordinates
     @markers = @lairs.geocoded.map do |lair|
       {

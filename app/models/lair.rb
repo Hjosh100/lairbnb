@@ -2,6 +2,14 @@ class Lair < ApplicationRecord
   geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_location?
 
+
+  include PgSearch::Model
+  pg_search_scope :search_by_lair,
+  against: [ :title, :category, :location, :description],
+  using: {
+    tsearch: { prefix: true } # <-- now `superman batm` will return something!
+  }
+
   validates :title, presence: true
   validates :category, presence: true, inclusion: { in: %w[island mountain countryside space underground] }
   validates :location, presence: true
