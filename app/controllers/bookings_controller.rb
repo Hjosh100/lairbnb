@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: %i[show confirm destroy]
-  before_action :set_lair, only: %i[new create]
+  before_action :set_lair, only: %i[show new create]
   before_action :set_booking_all, only: %i[index renter_index]
 
   def index
@@ -14,6 +14,7 @@ class BookingsController < ApplicationController
 
   def show
     authorize @booking
+    @booking.lair = @lair
   end
 
   def new
@@ -35,8 +36,9 @@ class BookingsController < ApplicationController
 
   def confirm
     authorize @booking
-    @booking.lair = @lair
-    @booking.accepted == false ? @booking.update(accepted: true) : @booking.update(accepted: false)
+    # @booking.lair = @lair
+    @booking.accepted ? @booking.update(accepted: false) : @booking.update(accepted: true)
+    # @booking.update(accepted: true)
     # redirect_to lair_booking_path(@booking)
     redirect_to renter_index_user_bookings_path(current_user), status: :see_other
   end
