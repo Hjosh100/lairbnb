@@ -40,6 +40,12 @@
     .card {
       margin-bottom: 20px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 15px; /* Rounded corners */
+    }
+
+    .card-columns {
+      column-count: 5; /* Display five cards per row */
+      column-gap: 20px; /* Space between cards */
     }
 
     /* Adjust map width */
@@ -47,12 +53,29 @@
       width: 80%;
       margin: auto;
     }
+
+    /* Added animation styles */
+    .title {
+      font-size: 3em;
+      animation: bounce 1.5s infinite alternate;
+    }
+
+    @keyframes bounce {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(-10px);
+      }
+    }
   </style>
 </head>
 <body>
 
+<!-- Opening Animation -->
+<h1 class="title text-center my-4">All Lairbnb Lairs 😈</h1> <!-- Evil emoji added to the title -->
+
 <div class="container">
-  <h1 class="text-center my-4">All Lairbnb Lairs 😈</h1> <!-- Evil emoji added to the title -->
   <div class="row justify-content-center">
     <div class="col-sm-8 my-3">
       <%= form_with url: lairs_path, method: :get, class: "d-flex" do %>
@@ -65,7 +88,8 @@
       <% end %>
     </div>
   </div>
-  <div class="row">
+  <!-- Updated card layout to use card-columns -->
+  <div class="card-columns">
     <% @lairs.each do |lair| %>
       <div class="col-md-6 mb-4">
         <div class="card position-relative">
@@ -109,6 +133,14 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Opening Animation JavaScript -->
+<script>
+window.onload = function() {
+    var audio = new Audio('evil_laughter.mp3');
+    audio.play();
+};
+</script>
 
 </body>
 </html>
