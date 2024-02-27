@@ -1,25 +1,29 @@
 <h1>Renter Index</h1>
 
-<% @bookings_for_user_lairs.each do |booking| %>
-  <div class="m-2 p-2 bg-white w-25 rounded-5">
-    <h2>Renter: <%= booking.user.first_name %></h2>
-    <!-- Other booking details -->
-  </div>
-  <div class="m-2 p-2 bg-white w-25 rounded-5">
-          <h2><%= booking.user.first_name %> <%= booking.user.last_name %></h2>
-          <p> accepted? <%= booking.accepted ? "yes" : "no" %></p>
-          <p>
-            <h4><%= booking.lair.title %></h4>
-            <% booking.lair.photos.each do |photo| %>
-              <%= cl_image_tag photo.key, width: 300, height: 300, class: "small-photo"  %>
-            <% end %>
-            <p><%= booking.lair.description %></p>
-            <p>Start date:<%= booking.start_date %></p>
-            <p>Finsh date:<%= booking.end_date %></p>
-            <p>Price: <%= booking.lair.price %></p>
-            <p>Location: <%= booking.lair.location %></p>
-            <p>Category: <%= booking.lair.category %></p>
-          </p>
-  </div>
-
-<% end %>
+<div class="container d-flex flex-wrap">
+  <% @bookings_for_user_lairs.each do |booking| %>
+    <div>
+      <div class="m-2 p-2 bg-white rounded-5", style="width: 325px;">
+        <h2>Renter: <%= booking.user.first_name %></h2>
+        <!-- Other booking details -->
+      </div>
+      <div class="m-2 p-2 bg-white rounded-5", style="width: 325px;">
+              <h2><%= booking.user.first_name %> <%= booking.user.last_name %></h2>
+              <p> accepted? <%= booking.accepted ? "yes" : "no" %></p>
+              <p>
+                <h4><%= booking.lair.title %></h4>
+                <% booking.lair.photos.each do |photo| %>
+                  <%= cl_image_tag photo.key, width: 300, height: 300, class: "small-photo"  %>
+                <% end %>
+                <p><%= booking.lair.description %></p>
+                <p>Start date:<%= booking.start_date %></p>
+                <p>Finsh date:<%= booking.end_date %></p>
+                <p>Price: <%= booking.lair.price %></p>
+                <p>Location: <%= booking.lair.location %></p>
+                <p>Category: <%= booking.lair.category %></p>
+                <%= link_to("Check", lair_booking_path(booking.lair, booking), class: "btn btn-primary") %>
+              </p>
+      </div>
+    </div>
+  <% end %>
+</div>

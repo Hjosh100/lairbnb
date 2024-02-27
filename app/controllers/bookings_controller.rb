@@ -1,11 +1,10 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: %i[show confirm destroy]
-  before_action :set_lair, only: %i[new create]
+  before_action :set_lair, only: %i[show new create]
   before_action :set_booking_all, only: %i[index renter_index]
 
   def index
     @bookings = policy_scope(Booking)
-
   end
 
   def renter_index
@@ -15,6 +14,7 @@ class BookingsController < ApplicationController
 
   def show
     authorize @booking
+    @booking.lair = @lair
   end
 
   def new
@@ -36,9 +36,8 @@ class BookingsController < ApplicationController
 
   def confirm
     authorize @booking
-    @booking.lair = @lair
-    @booking.update_attribute(accepted: true)
-    redirect_to lair_path(@lair), status: :see_other
+    @booking.accepted ? @booking.update(accepted: false) : @booking.update(accepted: true)
+    redirect_to renter_index_user_bookings_path(current_user), status: :see_other
   end
 
   def destroy
@@ -61,7 +60,11 @@ class BookingsController < ApplicationController
     @bookings = Booking.all
   end
 
+  def accept_params
+    params.require(:booking).permit(:accept)
+  end
+
   def booking_params
-    params.require(:booking).permit(:lair_id, :start_date, :end_date, :accepted)
+    params.require(:booking).permit(:lair_id, :start_date, :end_date)
   end
 end
