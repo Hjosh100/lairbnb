@@ -1,5 +1,5 @@
 class LairsController < ApplicationController
-  before_action :set_lair, only: [:show, :destroy]
+  before_action :set_lair, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: %i[show index]
 
   def index
@@ -38,6 +38,24 @@ class LairsController < ApplicationController
     else
       render 'new', status: :unprocessable_entity
     end
+  end
+
+  def edit
+    authorize @lair
+  end
+
+  def update
+
+    if lair_params[:photos].present?
+      @lair.photos.attach(lair_params[:photos])
+    end
+
+    if @lair.update(lair_params.except(:photos))
+      redirect_to lair_path(@lair)
+    else
+      render 'edit', status: :unprocessable_entity
+    end
+    authorize @lair
   end
 
   def destroy
