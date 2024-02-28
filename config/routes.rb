@@ -16,11 +16,15 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :lairs, only: %i[index show new create destroy] do
-    resources :bookings, except: %i[edit update]
+  resources :lairs, only: %i[index show new create edit update destroy] do
+    resources :bookings, except: %i[edit update] do
+      member do
+        patch :confirm
+      end
+    end
   end
 
-  patch "lair/:id/booking/:id", to: "bookings#confirm", as: "confirmation_booking"
+  # patch "lair/:id/booking/:id", to: "bookings#confirm", as: "confirmation_booking"
 
   # Defines the root path route ("/")
   # root "posts#index"

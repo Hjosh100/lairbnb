@@ -7,28 +7,39 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="styles.css">
   <style>
+    /* Additional CSS styles */
+    body {
+      font-family: Arial, sans-serif; /* Use a clean and modern sans-serif font */
+      background-color: #f2f2f2; /* Airbnb uses light backgrounds */
+      color: #333; /* Dark text color */
+    }
+
     .carousel-item img {
       height: 400px;
+      border-radius: 10px; /* Add rounded corners to carousel images */
     }
+
     .lair-title {
       font-weight: bold;
-      color: black;
+      color: #333;
       font-size: 20px;
     }
+
     .lair-price {
       font-weight: bold;
-      color: #8B0000;
+      color: #FF385C; /* Use Airbnb's brand color for prices */
     }
 
     .btn-custom {
-      background-color: #007bff;
+      background-color: #FF385C; /* Use Airbnb's brand color for buttons */
       color: white;
-      border-color: #007bff;
+      border-color: #FF385C;
+      border-radius: 20px; /* Add rounded corners to buttons */
     }
 
     .btn-custom:hover {
-      background-color: #0056b3;
-      color: white;
+      background-color: #FF0B5B; /* Darken the button color on hover */
+      border-color: #FF0B5B;
     }
 
     .btn-container {
@@ -40,6 +51,9 @@
     .card {
       margin-bottom: 20px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border: none; /* Remove card border */
+      border-radius: 20px; /* Add rounded corners to cards */
+      background-color: #fff; /* White background for cards */
     }
 
     /* Adjust map width */
@@ -52,11 +66,11 @@
 <body>
 
 <div class="container">
-  <h1 class="text-center my-4">All Lairbnb Lairs 😈</h1> <!-- Evil emoji added to the title -->
+  <h1 class="text-center my-4">All Lairbnb Lairs 😈</h1>
 
   <div class="row">
     <% @lairs.each do |lair| %>
-      <div class="col-md-6 mb-4">
+      <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> <!-- Adjust column widths for responsiveness -->
         <div class="card position-relative">
           <!-- Lair photo carousel -->
           <div id="carousel<%= lair.id %>" class="carousel slide" data-ride="carousel">
