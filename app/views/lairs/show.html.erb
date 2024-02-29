@@ -11,6 +11,7 @@
       font-size: 32px;
       font-weight: bold;
       margin-bottom: 20px;
+      text-align: center;
     }
     .carousel-item img {
       max-height: 500px;
@@ -33,6 +34,9 @@
       background-color: #f4f4f4;
       color: #333;
       border-color: #ccc;
+      border-radius: 5px;
+      padding: 10px 20px;
+      transition: background-color 0.2s ease-in-out;
     }
     .btn-custom:hover {
       background-color: #eaeaea;
@@ -80,7 +84,7 @@
       </div>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-4 d-flex justify-content-center align-items-center">
       <div class="text-center mt-4">
 
         <%= link_to "Book", new_lair_booking_path(@lair, @booking), class: "btn btn-custom" %>
