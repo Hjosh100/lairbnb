@@ -1,0 +1,18 @@
+.bookings-made-section {
+  background-image: image-url('The_joker.png');
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
+  padding: 20px;
+  width: 100%;
+}
+
+
+.card-link {
+  text-decoration: none;
+}
+
+.card-link:hover .card {
+  transform: scale(1.03);
+  transition: transform 0.2s ease-in-out;
+}
