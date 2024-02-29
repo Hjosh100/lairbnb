@@ -1,97 +1,49 @@
-<<<<<<< HEAD
-<div class="container-fluid">
-  <h1 class="ms-3 mb-2">Bookings made</h1>
-  <div class="container-fluid d-flex flex-wrap justify-content-center">
-    <% current_user.bookings.each do |booking| %>
-      <div class="m-2 p-2 bg-white card-container">
-        <div style="background-color: rgba(169, 169, 169, 0.2); padding: 10px; border-top-left-radius: 10px; border-top-right-radius: 10px;">
-          <h4>Your stay at <strong><%= booking.lair.title %></strong></h4>
-          <!-- Carousel of lair photos -->
-          <div id="carousel<%= booking.id %>" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <% booking.lair.photos.each_with_index do |photo, index| %>
-                <div class="carousel-item <%= 'active' if index == 0 %>">
-                  <%= cl_image_tag photo.key, width: 300, height: 300, class: "d-block w-100" %>
-                </div>
-              <% end %>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carousel<%= booking.id %>" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carousel<%= booking.id %>" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          </div>
-          <div>
-            <div class="d-flex pt-2 justify-content-between">
-              <p class="mr-2"><strong>Check-in</strong> <br> <%= booking.start_date.strftime('%A, %d %B') %> <br> 14:00</p>
-              <p><strong>Check-out</strong> <br> <%= booking.end_date.strftime('%A, %d %B') %> <br> 10:00</p>
-            </div>
-            <p><%= "Accepted" if booking.accepted %></p>
-            <!-- Display a preview of the description with a "Read More" link if description is too long -->
-            <% if booking.lair.description.length > 70 %>
-              <div class="preview-description">
-                <p><%= truncate(booking.lair.description, length: 100, omission: '...') %></p>
-                <a href="#" class="read-more-link" data-description="<%= booking.lair.description %>">Read More</a>
-              </div>
-            <% else %>
-              <p><%= booking.lair.description %></p>
-            <% end %>
+<div class="container-fluid mt-4 mb-4">
+  <h1 class="ms-3 mb-4">Bookings Made</h1>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 ">
 
-            <!-- Full description hidden by default -->
-            <div class="full-description" style="display: none;">
-              <p><%= booking.lair.description %></p>
+    <% current_user.bookings.each do |booking| %>
+      <div class="col">
+
+        <%= link_to "View Lair Booking", lair_booking_path(lair_id: booking.lair.id, id: booking.id), class: "btn btn-primary mt-2" %>
+          <div class= "card bg-light shadow" style="width: 26rem;">
+            <div class="card-body">
+              <h4 class="card-title mb-3"> Your stay at <strong><%= booking.lair.title %></strong></h4>
+
+              <div id="carousel<%= booking.id %>" class="carousel slide mb-3" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <% booking.lair.photos.each_with_index do |photo, index| %>
+                    <div class="carousel-item <%= 'active' if index == 0 %>">
+                      <%= cl_image_tag photo.key, width: 300, height: 300, class: "d-block w-100" %>
+                    </div>
+                  <% end %>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carousel<%= booking.id %>" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carousel<%= booking.id %>" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+
+              <div class="d-flex justify-content-between">
+                <div class="text-start">
+                  <p><strong>Check-in</strong> <br> <%= booking.start_date.strftime('%A, %d %B') %> <br> 14:00</p>
+                </div>
+                <div class="text-end">
+                  <p><strong>Check-out</strong> <br> <%= booking.end_date.strftime('%A, %d %B') %> <br> 10:00</p>
+                </div>
+              </div>
+
+              <p class="mb-2"><%= "Accepted" if booking.accepted %></p>
+              <p class="mb-2">Total Cost: <%= number_to_currency(number_of_nights(booking.start_date, booking.end_date) * booking.lair.price, unit: '£', format: '%u%n GBP') %></p>
+              <p class="mb-0">Address: <br><%= booking.lair.location %></p>
             </div>
-            <p>Price: <%= booking.lair.price %></p>
-            <p>Location: <%= booking.lair.location %></p>
-            <p>Category: <%= booking.lair.category %></p>
-            <p>Villain: <%= booking.lair.user.first_name %> <%= booking.lair.user.last_name %></p>
           </div>
-        </div>
       </div>
     <% end %>
+
   </div>
-=======
-<h1 class="ms-3 mb-2">Bookings made</h1>
-<div class="container d-flex justify-content-center flex-wrap">
-  <% current_user.bookings.each do |booking| %>
-    <div class="m-2 p-2 bg-white w-25 rounded-5">
-      <div>
-        <% booking.lair.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, width: 300, height: 300, class: "small-photo"  %>
-        <% end %>
-        <p><%= "Accepted" if booking.accepted %></p>
-        <h4><%= booking.lair.title %></h4>
-        <p><%= booking.lair.description %></p>
-        <p>Start date:<%= booking.start_date %></p>
-        <p>End date:<%= booking.end_date %></p>
-        <p>Price: <%= booking.lair.price %></p>
-        <p>Location: <%= booking.lair.location %></p>
-        <p>Category: <%= booking.lair.category %></p>
-        <p>Villain: <%= booking.lair.user.first_name %> <%= booking.lair.user.last_name %></p>
-      </div>
-    </div>
-  <% end %>
->>>>>>> master
 </div>
-
-<script>
-  // JavaScript to toggle visibility of full description on "Read More" click
-  document.addEventListener('DOMContentLoaded', function () {
-    const readMoreLinks = document.querySelectorAll('.read-more-link');
-
-    readMoreLinks.forEach(function (link) {
-      link.addEventListener('click', function (event) {
-        event.preventDefault();
-
-        const previewDescription = link.parentElement;
-        const fullDescription = previewDescription.nextElementSibling;
-
-        previewDescription.style.display = 'none';
-        fullDescription.style.display = 'block';
-      });
-    });
-  });
-</script>
