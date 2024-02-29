@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: %i[show edit confirm destroy]
+  before_action :set_booking, only: %i[show edit update confirm destroy]
   before_action :set_lair, only: %i[show new create edit]
   before_action :set_booking_all, only: %i[index renter_index]
 
@@ -35,11 +35,13 @@ class BookingsController < ApplicationController
   end
 
   def edit
+    @booking.lair = @lair
     authorize @booking
   end
 
   def update
     @booking.update(booking_params)
+    authorize @booking
     redirect_to user_bookings_path(current_user)
   end
 
