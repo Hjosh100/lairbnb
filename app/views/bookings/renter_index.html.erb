@@ -1,29 +1,40 @@
-<h1>Renter Index</h1>
-
-<div class="container d-flex flex-wrap">
-  <% @bookings_for_user_lairs.each do |booking| %>
-    <div>
-      <div class="m-2 p-2 bg-white rounded-5", style="width: 325px;">
-        <h2>Renter: <%= booking.user.first_name %></h2>
-        <!-- Other booking details -->
-      </div>
-      <div class="m-2 p-2 bg-white rounded-5", style="width: 325px;">
-              <h2><%= booking.user.first_name %> <%= booking.user.last_name %></h2>
-              <p> accepted? <%= booking.accepted ? "yes" : "no" %></p>
-              <p>
-                <h4><%= booking.lair.title %></h4>
-                <% booking.lair.photos.each do |photo| %>
-                  <%= cl_image_tag photo.key, width: 300, height: 300, class: "small-photo"  %>
-                <% end %>
+<main>
+  <h1>Renter Index</h1>
+  <div class="card-container d-flex flex-wrap">
+    <% @bookings_for_user_lairs.each do |booking| %>
+      <div>
+        <div class="m-2 p-4 bg-secondary-subtle rounded-4 shadow", style="width: 300px;">
+          <!-- Other booking details -->
+          <p>
+            <% booking.lair.photos.each do |photo| %>
+              <%= cl_image_tag photo.key, height: 250, width: 250, crop: :fill, class: "small-photo"  %>
+            <% end %>
+            <div class="d-flex flex-column">
+            <h6 class="fw-bold">From <%= booking.user.first_name %> <%= booking.user.last_name %></h6>
+            <p> Accepted: <%= booking.accepted ? "yes" : "no" %></p>
+              <div class="d-flex">
+                <div class="mt-2 me-2 mb-2">
+                  <h6 class="fw-bold">Check-in</h6>
+                  <p><%= booking.start_date %></p>
+                </div>
+                <div class="m-2">
+                  <h6 class="fw-bold">Check-out</h6>
+                  <p><%= booking.end_date %></p>
+                </div>
+              </div>
+              <div>
+                <h4 class="fw-bold"><%= booking.lair.title %></h4>
                 <p><%= booking.lair.description %></p>
-                <p>Start date:<%= booking.start_date %></p>
-                <p>Finsh date:<%= booking.end_date %></p>
-                <p>Price: <%= booking.lair.price %></p>
+                <p>Price: £<%= booking.lair.price %></p>
                 <p>Location: <%= booking.lair.location %></p>
                 <p>Category: <%= booking.lair.category %></p>
-                <%= link_to("Check", lair_booking_path(booking.lair, booking), class: "btn btn-primary") %>
-              </p>
+                <p>Villain: <%= booking.lair.user.first_name %> <%= booking.lair.user.last_name %></p>
+                <%= link_to("Check", lair_booking_path(booking.lair, booking), class: "btn btn-dark text-opacity-50 ") %>
+              </div>
+            </div>
+          </p>
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
+</main>
