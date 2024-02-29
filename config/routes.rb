@@ -16,8 +16,8 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :lairs, only: %i[index show new create edit update destroy] do
-    resources :bookings, except: %i[edit update] do
+  resources :lairs do
+    resources :bookings, except: %i[index] do
       member do
         patch :confirm
       end

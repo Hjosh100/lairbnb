@@ -17,6 +17,7 @@
         <td><%= @booking.end_date.strftime("%Y-%m-%d") %></td>
         <td><%= @booking.accepted ? "Confirmed" : "Pending" %></td>
         <td><%= @booking.id %></td>
+        <td><%= link_to "Edit", edit_lair_booking_path(@booking.lair, @booking) %></td>
         <td>
           <% if @booking.accepted %>
             <%= link_to "Cancel", confirm_lair_booking_path, data: { turbo_method: :patch, confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" %>
