@@ -1,0 +1,12 @@
+.card {
+  border-radius: 15px;
+}
+
+.card-link {
+  text-decoration: none;
+}
+
+.card-link:hover .card {
+  transform: scale(1.03);
+  transition: transform 0.2s ease-in-out;
+}
