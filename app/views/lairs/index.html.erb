@@ -27,7 +27,7 @@
 
     .lair-price {
       font-weight: bold;
-      color: black; /* Use Airbnb's brand color for prices */
+      color: #FF385C; /* Use Airbnb's brand color for prices */
     }
 
     .btn-custom {
@@ -61,10 +61,6 @@
     border: none; /* Remove card border */
     }
 
-    .card-text .star {
-    color: black;
-    }
-
 
     /* Adjust map width */
     #map-container {
@@ -80,39 +76,36 @@
 
   <div class="row">
     <% @lairs.each do |lair| %>
-  <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> <!-- Adjust column widths for responsiveness -->
-    <div class="card position-relative">
-      <!-- Lair photo carousel -->
-      <div id="carousel<%= lair.id %>" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-          <% lair.photos.each_with_index do |photo, index| %>
-            <div class="carousel-item <%= 'active' if index.zero? %>">
-              <%= cl_image_tag photo.key, class: "d-block w-100 img-fluid" %>
+      <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> <!-- Adjust column widths for responsiveness -->
+        <div class="card position-relative">
+          <!-- Lair photo carousel -->
+          <div id="carousel<%= lair.id %>" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <% lair.photos.each_with_index do |photo, index| %>
+                <div class="carousel-item <%= 'active' if index.zero? %>">
+                  <%= cl_image_tag photo.key, class: "d-block w-100 img-fluid" %>
+                </div>
+              <% end %>
             </div>
-          <% end %>
-        </div>
-        <a class="carousel-control-prev" href="#carousel<%= lair.id %>" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carousel<%= lair.id %>" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title lair-title"><%= lair.title %></h5>
-        <p class="card-text"><strong>£</strong> <span class="lair-price"><%= lair.price %></span></p>
-        <p class="card-text"><strong>Rating:</strong> <%= rand(2.0..5.0).round(2) %> ⭐</p>
-        <p class="card-text"><strong>Review:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis velit enim.</p>
-        <div class="btn-container">
-          <%= link_to "View Lair", lair_path(lair), class: "btn btn-custom" %>
+            <a class="carousel-control-prev" href="#carousel<%= lair.id %>" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carousel<%= lair.id %>" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title lair-title"><%= lair.title %></h5>
+            <p class="card-text"><strong>Price:</strong> <span class="lair-price"><%= lair.price %></span></p>
+            <div class="btn-container">
+              <%= link_to "View Lair", lair_path(lair), class: "btn btn-custom" %>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-<% end %>
-
+    <% end %>
   </div>
 </div>
 
