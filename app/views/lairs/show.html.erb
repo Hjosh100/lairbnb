@@ -85,7 +85,6 @@
         <%= link_to "Book", new_lair_booking_path(@lair, @booking), class: "btn btn-custom" %>
       </div>
       <div class="text-center mt-4">
-
         <% if policy(@lair).edit?  %>
           <%= link_to "edit", edit_lair_path(@lair), class: "btn btn-custom" %>
         <% end %>
