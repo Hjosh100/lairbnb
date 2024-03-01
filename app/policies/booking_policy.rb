@@ -31,7 +31,7 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def confirm?
-    return true
+    record.user != user
   end
 
   def destroy?
