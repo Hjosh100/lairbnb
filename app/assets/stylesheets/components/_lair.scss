@@ -43,7 +43,7 @@
 }
 
 .card-body {
-  background-color: black; /* Match the background color of the page */
+  background-color: #325152; /* Match the background color of the page */
   border: none; /* Remove card border */
   color: white; /* Set text color to white */
 }
@@ -95,4 +95,35 @@
   margin-top: 5px; /* Add some space between icon and description */
   font-size: 14px; /* Adjust description font size */
   color: white; /* Set text color to white */
+}
+
+.search-container {
+  display: flex;
+  justify-content: center; /* Center the form horizontally */
+  margin-top: 20px; /* Add some top margin */
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  width: 70%; /* Set the width of the form */
+  max-width: 600px; /* Set a maximum width if needed */
+}
+
+.search-input {
+  flex: 1; /* Let the input grow to fill available space */
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border: 1px solid #9ae0e7;
+  padding: 10px 15px; /* Increase padding */
+}
+
+.search-button {
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border: 1px solid #6aaeac;
+  background-color: #507a72;
+  color: #7b9c96;
+  padding: 10px 15px; /* Increase padding */
+  cursor: pointer;
 }
