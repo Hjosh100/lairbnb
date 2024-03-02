@@ -1,8 +1,10 @@
 
-<h1 class="text-center my-4">All Lairbnb Lairs 😈</h1>
 
-<div class="row">
-  <% @lairs.each do |lair| %>
+<div data-controller="toggle">
+  <div class="container" data-toggle-target="togglableElement">
+    <h1 class="text-center my-4">All Lairbnb Lairs 😈</h1>
+    <div class="row">
+      <% @lairs.each do |lair| %>
     <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> <!-- Adjust column widths for responsiveness -->
       <%= link_to lair_path(lair), class: "card-link" do %>
         <div class="card position-relative">

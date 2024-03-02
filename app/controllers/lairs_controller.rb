@@ -1,5 +1,5 @@
 class LairsController < ApplicationController
-  before_action :set_lair, only: [:show, :edit, :update, :destroy]
+  before_action :set_lair, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!, only: %i[show index]
 
   def index
@@ -15,7 +15,7 @@ class LairsController < ApplicationController
       {
         lat: lair.latitude,
         lng: lair.longitude,
-        info_window_html: render_to_string(partial: "info_window", locals: {lair: lair}),
+        info_window_html: render_to_string(partial: "info_window", locals: { lair: lair }),
         marker_html: render_to_string(partial: "marker")
       }
     end
@@ -25,6 +25,12 @@ class LairsController < ApplicationController
   def show
     authorize @lair
     @booking = Booking.new
+    @markers = [{
+      lat: @lair.latitude,
+      lng: @lair.longitude,
+      info_window_html: render_to_string(partial: "info_window", locals: {lair: @lair}),
+      marker_html: render_to_string(partial: "marker")
+    }]
   end
 
   def new
