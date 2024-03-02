@@ -1,5 +1,5 @@
 class LairsController < ApplicationController
-  before_action :set_lair, only: [:show, :edit, :update, :destroy]
+  before_action :set_lair, only: %i[show edit update destroy]
   skip_before_action :authenticate_user!, only: %i[show index]
 
   def index
