@@ -1,6 +1,6 @@
 /* Original CSS styles */
 .carousel-item img {
-  height: 500px;
+  height: 270px;
   border-radius: 10px; /* Add rounded corners to carousel images */
 }
 
@@ -15,17 +15,6 @@
   color: white; /* Use white color for prices */
 }
 
-.btn-custom {
-  background-color: white; /* Use white background color for buttons */
-  color: black; /* Set text color to black */
-  border-color: #ff385c;
-  border-radius: 20px; /* Add rounded corners to buttons */
-}
-
-.btn-custom:hover {
-  background-color: #ff0b5b; /* Darken the button color on hover */
-  border-color: #ff0b5b;
-}
 
 .btn-container {
   position: absolute;
@@ -33,7 +22,18 @@
   right: 20px;
 }
 
+.card-body {
+  background-color: #325152; /* Match the background color of the page */
+  border: none; /* Remove card border */
+  color: white; /* Set text color to white */
+  flex-grow: 1;
+}
+
+
 .card {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Expand card height to fill the container */
   margin-bottom: 20px;
   box-shadow: none;
   border: none; /* Remove card border */
@@ -42,11 +42,7 @@
   color: white; /* Set text color to white */
 }
 
-.card-body {
-  background-color: #325152; /* Match the background color of the page */
-  border: none; /* Remove card border */
-  color: white; /* Set text color to white */
-}
+
 
 .card-text .star {
   color: white; /* Set text color to white */
