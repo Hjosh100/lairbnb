@@ -10,7 +10,7 @@
         <div class="carousel-inner">
           <% lair.photos.each_with_index do |photo, index| %>
             <div class="carousel-item <%= 'active' if index.zero? %>">
-              <%= cl_image_tag photo.key, class: "d-block w-100 img-fluid" %>
+              <%= cl_image_tag photo.key, crop: :fill, class: "d-block w-100 img-fluid" %>
             </div>
           <% end %>
         </div>
