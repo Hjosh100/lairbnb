@@ -21,26 +21,34 @@
 
 .header-icons {
   display: flex;
-  justify-content: center;
+  justify-content: center; /* Center the icons horizontally */
   align-items: center;
   flex-wrap: wrap; /* Allow icons to wrap to the next line if needed */
   gap: 40px; /* Add more space between icons */
+  margin-top: 7px; /* Add more top margin for spacing */
 }
 
 .icon {
   text-align: center; /* Center icon and description */
-  transition: transform 0.3s; /* Add transition for hover effect */
-}
-
-.icon:hover {
-  transform: translateY(-5px); /* Move icon up on hover */
+  display: inline-block; /* Display icons inline */
+  width: 120px; /* Set a fixed width for each icon container */
 }
 
 .icon i {
   font-size: 2em; /* Adjust icon size as needed */
+  transition: transform 0.3s ease; /* Add transition for smooth animation */
 }
 
 .icon p {
-  margin-top: 5px; /* Add some space between icon and description */
+  margin-top: 10px; /* Add more space between icon and description */
   font-size: 14px; /* Adjust description font size */
+  transition: transform 0.3s ease; /* Add transition for smooth animation */
+}
+
+.icon:hover i {
+  transform: translateY(-5px); /* Move icon up on hover */
+}
+
+.icon:hover p {
+  transform: translateY(-5px); /* Move text up on hover */
 }
