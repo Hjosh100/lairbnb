@@ -4,6 +4,7 @@
   left: 50%; /* Move the button to the middle horizontally */
   transform: translateX(-50%); /* Center the button horizontally */
   padding: 10px 20px;
+  z-index: 9999; /* Ensure it appears above other elements */
   background-color: #007bff;
   color: #fff;
   border: none;
