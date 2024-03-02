@@ -1,11 +1,12 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-8 mx-auto">
       <div class="d-flex justify-content-between mt-4">
-        <h1 class="lair-title mr-auto"><%= @lair.title %></h1>
-        <div class="d-flex">
+        <h2 class="lair-title mr-auto"><strong><%= @lair.title %></strong></h2>
+        <div class="d-flex mb-2">
           <%if current_user == @lair.user%>
+            <%= link_to "Edit", edit_lair_path(@lair), class: "btn btn-custom right-side-buttons", style: "margin-right: 10px" %>
             <%= link_to "Delete", lair_path(@lair),
               method: :delete,
               data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
@@ -36,15 +37,15 @@
 
       <!-- Lair Details -->
       <div class="lair-details">
-        <h2>Location:</h2>
+        <h4 class="mt-2">Location:</h4>
         <p><%= @lair.location %></p>
-        <h2>Description:</h2>
+        <h4>Description:</h4>
         <p><%= @lair.description %></p>
-        <h2>Price:</h2>
-        <p><%= @lair.price %></p>
-        <h2>Category:</h2>
+        <h4>Price per night:</h4>
+        <p>£ <%= @lair.price %> GBP</p>
+        <h4>Category:</h4>
         <p><%= @lair.category %></p>
-        <h2>Villain:</h2>
+        <h4>Villain:</h4>
         <p><%= @lair.user.first_name %> <%= @lair.user.last_name %></p>
       </div>
     </div>
