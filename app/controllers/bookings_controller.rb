@@ -42,7 +42,7 @@ class BookingsController < ApplicationController
   def update
     @booking.update(booking_params)
     authorize @booking
-    redirect_to user_bookings_path(current_user)
+    redirect_to lair_booking_path(@booking.lair, @booking)
   end
 
   def confirm

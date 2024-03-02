@@ -4,8 +4,8 @@
   <thead>
     <tr>
       <th>Lair</th>
-      <th>Start date</th>
-      <th>End date</th>
+      <th>Check-in</th>
+      <th>Check-out</th>
       <th>Status</th>
       <th>Booking ID</th>
     </tr>
@@ -35,3 +35,8 @@
       </tr>
   </tbody>
 </table>
+<% if policy(@booking).confirm? %>
+  <%= link_to("Back to bookings", renter_index_user_bookings_path(current_user)) %>
+<% elsif policy(@booking).edit? %>
+  <%= link_to("Back to bookings", user_bookings_path(current_user)) %>
+<% end %>
