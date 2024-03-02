@@ -1,3 +1,4 @@
+/* Original CSS styles */
 .carousel-item img {
   height: 250px;
   border-radius: 10px; /* Add rounded corners to carousel images */
@@ -70,71 +71,24 @@
   margin: auto;
 }
 
-/* Previous code with conflict
+/* Additional CSS styles for header icons */
+.header-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* Allow icons to wrap to the next line if needed */
+  gap: 20px; /* Add space between icons */
+}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Show Lair</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
-  <style>
-    .lair-title {
-      font-size: 32px;
-      font-weight: bold;
-      margin-bottom: 20px;
-      text-align: center;
-      font-family: 'Oswald', sans-serif;
-    }
-    .carousel-item img {
-      max-height: 500px;
-      object-fit: cover;
-    }
-    .lair-details {
-      margin-top: 30px;
-    }
-    .lair-details h2 {
-      font-size: 40px;
-      margin-top: 20px;
-      margin-bottom: 10px;
-      font-weight: bold;
-            font-family: 'Oswald', sans-serif;
+.icon {
+  text-align: center; /* Center icon and description */
+}
 
-    }
-    .lair-details p {
-      font-size: 18px;
-      line-height: 1.5;
-    }
-    .btn-custom {
-      font-size: 18px;
-      background-color: #f4f4f4;
-      color: #333;
-      border-color: #ccc;
-      border-radius: 5px;
-      padding: 100px 50px;
-      margin-top: align-items: center;
-      transition: background-color 0.2s ease-in-out;
-    }
-    .btn-custom:hover {
-      background-color: #eaeaea;
-      color: #333;
-    }
-    .right-side-buttons {
-  /* Your desired styles for the buttons */
-//   background-color: #007bff; /* Example: Change background color */
-//   color: white; /* Example: Change text color */
-// }
-//   </style>
-// </head>
-// <body>
-// <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-// <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-// <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+.icon i {
+  font-size: 2em; /* Adjust icon size as needed */
+}
 
-// </body>
-// </html>
+.icon p {
+  margin-top: 5px; /* Add some space between icon and description */
+  font-size: 14px; /* Adjust description font size */
+}
