@@ -11,3 +11,15 @@
 @import "components/index";
 @import "pages/index";
 @import "bookings/index";
+
+//specific global css
+
+* {
+  font-stretch: 50%; // Apply font stretching to elements with the class "body-text"
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+body {
+  background-color: $yellow; /* Specify the background color */
+}
