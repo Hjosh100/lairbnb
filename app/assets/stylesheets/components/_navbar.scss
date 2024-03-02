@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: $blue;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -10,4 +10,45 @@
 .navbar-lewagon .navbar-brand img {
   width: 150px;
   height: 80px;
+}
+
+/* Additional CSS styles for header icons */
+/* Additional CSS styles for header icons */
+.subtle-line {
+  border-top: 1px solid #ccc; /* Subtle line */
+  margin-top: 20px; /* Adjust the margin as needed */
+}
+
+.header-icons {
+  display: flex;
+  justify-content: center; /* Center the icons horizontally */
+  align-items: center;
+  flex-wrap: wrap; /* Allow icons to wrap to the next line if needed */
+  gap: 40px; /* Add more space between icons */
+  margin-top: 7px; /* Add more top margin for spacing */
+}
+
+.icon {
+  text-align: center; /* Center icon and description */
+  display: inline-block; /* Display icons inline */
+  width: 120px; /* Set a fixed width for each icon container */
+}
+
+.icon i {
+  font-size: 2em; /* Adjust icon size as needed */
+  transition: transform 0.3s ease; /* Add transition for smooth animation */
+}
+
+.icon p {
+  margin-top: 10px; /* Add more space between icon and description */
+  font-size: 14px; /* Adjust description font size */
+  transition: transform 0.3s ease; /* Add transition for smooth animation */
+}
+
+.icon:hover i {
+  transform: translateY(-5px); /* Move icon up on hover */
+}
+
+.icon:hover p {
+  transform: translateY(-5px); /* Move text up on hover */
 }

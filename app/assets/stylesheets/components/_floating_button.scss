@@ -1,0 +1,13 @@
+.floating-btn {
+  position: fixed;
+  bottom: 20px; /* Adjust as needed */
+  left: 50%; /* Move the button to the middle horizontally */
+  transform: translateX(-50%); /* Center the button horizontally */
+  padding: 10px 20px;
+  z-index: 9999; /* Ensure it appears above other elements */
+  background-color: $red;
+  color: #fff;
+  border: none;
+  border-radius: 50px; /* Adjust to control the curvature */
+  cursor: pointer;
+}

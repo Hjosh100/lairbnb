@@ -1,92 +1,89 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>All Lairbnb Lairs</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    .carousel-item img {
-      height: 400px;
-    }
-    .lair-title {
-      font-weight: bold;
-      color: black;
-    }
-    .lair-price {
-      font-weight: bold;
-      color: red;
-    }
+<div data-controller="toggle">
+ <div class="header-icons">
+    <div class="icon">
+      <i class="fas fa-mountain"></i>
+      <p>Mountain</p>
+    </div>
+    <div class="icon">
+      <i class="fas fa-volcano"></i>
+      <p>Volcano</p>
+    </div>
+    <div class="icon">
+      <i class="fas fa-umbrella-beach"></i>
+      <p>Beach</p>
+    </div>
+    <div class="icon">
+      <i class="fas fa-earth-africa"></i>
+      <p>Earth (Africa)</p>
+    </div>
+    <div class="icon">
+      <i class="fas fa-igloo"></i>
+      <p>Igloo</p>
+    </div>
+    <div class="icon">
+      <i class="fas fa-dungeon"></i>
+      <p>Dungeon</p>
+    </div>
+  <div class="container" data-toggle-target="togglableElement">
+    <h1 class="text-center my-4">All Lairbnb Lairs 😈</h1>
 
-    .btn-custom {
-      background-color: #f4f4f4;
-      color: #333;
-      border-color: #ccc;
-    }
-
-    .btn-custom:hover {
-      background-color: #eaeaea;
-      color: #333;
-    }
-
-    /* Adjust button position */
-    .btn-container {
-      position: absolute;
-      bottom: 20px;
-      right: 20px;
-    }
-  </style>
-</head>
-<body>
-
-<div class="container">
-  <h1 class="text-center my-4">All Lairbnb Lairs</h1>
-
-  <div class="row">
-    <% @lairs.each do |lair| %>
-      <div class="col-md-6 mb-4">
-        <div class="card position-relative"> <!-- Add position-relative class to make position:absolute work -->
-          <!-- Lair photo carousel -->
-          <div id="carousel<%= lair.id %>" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-              <% lair.photos.each_with_index do |photo, index| %>
-                <div class="carousel-item <%= 'active' if index.zero? %>">
-                  <%= cl_image_tag photo.key, class: "d-block w-100 img-fluid" %>
-                </div>
-              <% end %>
-            </div>
-            <a class="carousel-control-prev" href="#carousel<%= lair.id %>" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carousel<%= lair.id %>" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
+    <div class="row">
+      <% @lairs.each do |lair| %>
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4"> <!-- Adjust column widths for responsiveness -->
+      <div class="card position-relative">
+        <!-- Lair photo carousel -->
+        <div id="carousel<%= lair.id %>" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <% lair.photos.each_with_index do |photo, index| %>
+              <div class="carousel-item <%= 'active' if index.zero? %>">
+                <%= cl_image_tag photo.key, class: "d-block w-100 img-fluid" %>
+              </div>
+            <% end %>
           </div>
-          <div class="card-body">
-            <h5 class="card-title lair-title"><%= lair.title %></h5>
-            <p class="card-text"><strong>Price:</strong> <span class="lair-price"><%= lair.price %></span></p>
-            <div class="btn-container">
-              <%= link_to "View Lair", lair_path(lair), class: "btn btn-custom" %>
-            </div>
-          </div>
+          <a class="carousel-control-prev" href="#carousel<%= lair.id %>" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carousel<%= lair.id %>" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
+        <div class="card-body">
+        <div class="title-container">
+          <h5 class="card-title lair-title"><%= lair.title %></h5>
+          <p class="card-text"><strong></strong> <span class="star">&#9733;</span> <%= rand(2.0..5.0).round(2) %></p>
+        </div>
+          <p class="card-text"><strong>£</strong> <span class="lair-price"><%= lair.price %></span></p>
+        <div class="btn-container">
+          <%= link_to "View Lair", lair_path(lair), class: "btn btn-custom" %>
+        </div>
+        <a class="carousel-control-prev" href="#carousel<%= lair.id %>" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>``
+        <a class="carousel-control-next" href="#carousel<%= lair.id %>" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
       </div>
-    <% end %>
+      <div class="card-body">
+      <div class="title-container">
+        <h5 class="card-title lair-title"><%= lair.title %></h5>
+        <p class="card-text"><strong></strong> <span class="star">&#9733;</span> <%= rand(2.0..5.0).round(2) %></p>
+
+      </div>
+
+      </div>
+    </div>
+  <% end %>
+    </div>
   </div>
+  <button class="floating-btn" data-toggle-target="toggleButton" data-action="click->toggle#fire">Find your lair</button>
 </div>
 
-<div style="width: 100%; height: 600px;"
+<div id="map-container" style="height: 600px;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-</body>
-</html>
