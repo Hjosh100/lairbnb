@@ -1,7 +1,9 @@
-body {
-  font-family: Arial, sans-serif; /* Use a clean and modern sans-serif font */
-  background-color: white; /* Airbnb uses light backgrounds */
-  color: #333; /* Dark text color */
+.body-text {
+  font-stretch: extra-expanded; // Apply font stretching to elements with the class "body-text"
+}
+
+.heading {
+  font-stretch: extra-expanded; // Apply font stretching to elements with the class "heading"
 }
 
 .carousel-item img {
