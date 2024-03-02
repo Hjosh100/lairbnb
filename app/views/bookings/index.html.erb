@@ -83,7 +83,6 @@
                   <p><strong>Check-out</strong> <br> <%= booking.end_date.strftime('%A, %d %B') %> <br> 10:00</p>
                 </div>
               </div>
-              <p class="mb-2"><%= "Accepted" if booking.accepted %></p>
               <p class="mb-2"><strong>Total Cost:</strong> <%= number_to_currency(number_of_nights(booking.start_date, booking.end_date) * booking.lair.price, unit: '£', format: '%u%n GBP') %></p>
               <p class="mb-0"><strong>Address:</strong> <br><%= booking.lair.location %></p>
             </div>
@@ -94,13 +93,13 @@
   </div>
 <% else %>
   <h2 class="ms-3 mb-5">Upcoming Bookings</h2>
-  <h3 class="ms-3 mb-5"><strong>No upcoming bookings</strong></h3>
+  <h3 class="ms-5 mb-5"><strong>No upcoming bookings</strong></h3>
 <% end %>
 
 
   <!-- Past Bookings -->
 <h2 class="ms-3 mt-2 mb-4">Past Bookings
-  <button id="seeMoreButton" class="btn btn-primary float-end mr-2">
+  <button id="seeMoreButton" class="btn btn-primary float-end me-4" >
     See More
   </button></h2>
 <div id="pastBookingsContainer" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
