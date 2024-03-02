@@ -102,6 +102,7 @@
       <div style="border: 1px solid rgb(221, 221, 221); border-radius: 12px; padding: 24px; box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;">
       <div class="text-center mt-4">
 
+
         <%= link_to "Book", new_lair_booking_path(@lair, @booking), class: "btn btn-custom right-side-buttons" %>
       </div>
       <div class="text-center mt-4">
@@ -109,6 +110,7 @@
             method: :delete,
             data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
         class: "btn btn-custom right-side-buttons" %>
+
       </div>
     </div>
   </div>
