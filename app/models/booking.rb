@@ -6,7 +6,14 @@ class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :lair
 
-  # def initialize(accepted)
-  #   @accepted = accepted
-  # end
+  def self.future
+    where('start_date > ?', Date.today)
+  end
+
+  def self.past
+    where('end_date < ?', Date.today)
+  end
+
+  scope :current, -> { where('start_date <= ? AND end_date >= ?', Date.today, Date.today) }
+
 end
