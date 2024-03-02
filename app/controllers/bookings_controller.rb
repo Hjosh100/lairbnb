@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: %i[show confirm destroy]
-  before_action :set_lair, only: %i[show new create]
+  before_action :set_booking, only: %i[show edit update confirm destroy]
+  before_action :set_lair, only: %i[show new create edit]
   before_action :set_booking_all, only: %i[index renter_index]
 
   def index
@@ -34,6 +34,17 @@ class BookingsController < ApplicationController
     end
   end
 
+  def edit
+    @booking.lair = @lair
+    authorize @booking
+  end
+
+  def update
+    @booking.update(booking_params)
+    authorize @booking
+    redirect_to user_bookings_path(current_user)
+  end
+
   def confirm
     authorize @booking
     @booking.accepted ? @booking.update(accepted: false) : @booking.update(accepted: true)
@@ -58,10 +69,6 @@ class BookingsController < ApplicationController
 
   def set_booking_all
     @bookings = Booking.all
-  end
-
-  def accept_params
-    params.require(:booking).permit(:accept)
   end
 
   def booking_params

@@ -10,12 +10,12 @@
     /* Additional CSS styles */
     body {
       font-family: Arial, sans-serif; /* Use a clean and modern sans-serif font */
-      background-color: #f2f2f2; /* Airbnb uses light backgrounds */
+      background-color: white; /* Airbnb uses light backgrounds */
       color: #333; /* Dark text color */
     }
 
     .carousel-item img {
-      height: 400px;
+      height: 250px;
       border-radius: 10px; /* Add rounded corners to carousel images */
     }
 
@@ -27,11 +27,11 @@
 
     .lair-price {
       font-weight: bold;
-      color: #FF385C; /* Use Airbnb's brand color for prices */
+      color: black; /* Use Airbnb's brand color for prices */
     }
 
     .btn-custom {
-      background-color: #FF385C; /* Use Airbnb's brand color for buttons */
+      background-color: black; /* Use Airbnb's brand color for buttons */
       color: white;
       border-color: #FF385C;
       border-radius: 20px; /* Add rounded corners to buttons */
@@ -50,10 +50,34 @@
 
     .card {
       margin-bottom: 20px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      box-shadow: none;
       border: none; /* Remove card border */
       border-radius: 20px; /* Add rounded corners to cards */
-      background-color: #fff; /* White background for cards */
+      background-color: white; /* White background for cards */
+    }
+
+    .card-body {
+    background-color: white; /* Match the background color of the page */
+    border: none; /* Remove card border */
+    }
+
+    .card-text .star {
+    color: black;
+    }
+
+    .title-container {
+    display: flex;
+    align-items: center;
+    }
+
+    .card-title {
+      flex: 1;
+      font-size: 16px; /* Adjust the font size as needed */
+    }
+
+    .star {
+      color: black; /* Set the color of the star symbol to white */
+      font-size: 15px; /* Adjust the font size as needed */
     }
     
     /* Adjust map width */
@@ -70,6 +94,7 @@
 <div data-controller="toggle">
   <div class="container" data-toggle-target="togglableElement">
     <h1 class="text-center my-4">All Lairbnb Lairs 😈</h1>
+
 
     <div class="row">
       <% @lairs.each do |lair| %>
