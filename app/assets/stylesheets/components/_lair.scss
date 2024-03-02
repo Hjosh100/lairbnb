@@ -6,18 +6,18 @@
 
 .lair-title {
   font-weight: bold;
-  color: #333;
+  color: white; /* Set text color to white */
   font-size: 20px;
 }
 
 .lair-price {
   font-weight: bold;
-  color: black; /* Use Airbnb's brand color for prices */
+  color: white; /* Use white color for prices */
 }
 
 .btn-custom {
-  background-color: black; /* Use Airbnb's brand color for buttons */
-  color: white;
+  background-color: white; /* Use white background color for buttons */
+  color: black; /* Set text color to black */
   border-color: #ff385c;
   border-radius: 20px; /* Add rounded corners to buttons */
 }
@@ -39,15 +39,17 @@
   border: none; /* Remove card border */
   border-radius: 20px; /* Add rounded corners to cards */
   background-color: white; /* White background for cards */
+  color: white; /* Set text color to white */
 }
 
 .card-body {
-  background-color: white; /* Match the background color of the page */
+  background-color: black; /* Match the background color of the page */
   border: none; /* Remove card border */
+  color: white; /* Set text color to white */
 }
 
 .card-text .star {
-  color: black;
+  color: white; /* Set text color to white */
 }
 
 .title-container {
@@ -58,10 +60,11 @@
 .card-title {
   flex: 1;
   font-size: 16px; /* Adjust the font size as needed */
+  color: white; /* Set text color to white */
 }
 
 .star {
-  color: black; /* Set the color of the star symbol to white */
+  color: white; /* Set the color of the star symbol to white */
   font-size: 15px; /* Adjust the font size as needed */
 }
 
@@ -91,4 +94,5 @@
 .icon p {
   margin-top: 5px; /* Add some space between icon and description */
   font-size: 14px; /* Adjust description font size */
+  color: white; /* Set text color to white */
 }
