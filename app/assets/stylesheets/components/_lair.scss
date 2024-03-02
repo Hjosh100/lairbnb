@@ -1,0 +1,77 @@
+body {
+  font-family: Arial, sans-serif; /* Use a clean and modern sans-serif font */
+  background-color: white; /* Airbnb uses light backgrounds */
+  color: #333; /* Dark text color */
+}
+
+.carousel-item img {
+  height: 250px;
+  border-radius: 10px; /* Add rounded corners to carousel images */
+}
+
+.lair-title {
+  font-weight: bold;
+  color: #333;
+  font-size: 20px;
+}
+
+.lair-price {
+  font-weight: bold;
+  color: black; /* Use Airbnb's brand color for prices */
+}
+
+.btn-custom {
+  background-color: black; /* Use Airbnb's brand color for buttons */
+  color: white;
+  border-color: #ff385c;
+  border-radius: 20px; /* Add rounded corners to buttons */
+}
+
+.btn-custom:hover {
+  background-color: #ff0b5b; /* Darken the button color on hover */
+  border-color: #ff0b5b;
+}
+
+.btn-container {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.card {
+  margin-bottom: 20px;
+  box-shadow: none;
+  border: none; /* Remove card border */
+  border-radius: 20px; /* Add rounded corners to cards */
+  background-color: white; /* White background for cards */
+}
+
+.card-body {
+  background-color: white; /* Match the background color of the page */
+  border: none; /* Remove card border */
+}
+
+.card-text .star {
+  color: black;
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+}
+
+.card-title {
+  flex: 1;
+  font-size: 16px; /* Adjust the font size as needed */
+}
+
+.star {
+  color: black; /* Set the color of the star symbol to white */
+  font-size: 15px; /* Adjust the font size as needed */
+}
+
+/* Adjust map width */
+#map-container {
+  width: 80%;
+  margin: auto;
+}
