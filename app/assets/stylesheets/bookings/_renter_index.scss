@@ -6,6 +6,20 @@ main {
   color: rgb(226, 227, 229);
 }
 
+.card {
+  border-radius: 15px;
+  border: 1px solid grey;
+}
+
+.card-link {
+  text-decoration: none;
+}
+
+.card-link:hover .card {
+  transform: scale(1.03);
+  transition: transform 0.2s ease-in-out;
+}
+
 // .card-container {
 //   width: 100%;
 // }

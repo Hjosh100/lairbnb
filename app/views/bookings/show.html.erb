@@ -17,9 +17,12 @@
         <td><%= @booking.end_date.strftime("%Y-%m-%d") %></td>
         <td><%= @booking.accepted ? "Confirmed" : "Pending" %></td>
         <td><%= @booking.id %></td>
-        <% if policy(@booking).edit? %>
-          <td class="d-flex justify-content-end"><%= link_to "Edit", edit_lair_booking_path(@booking.lair, @booking), class: "btn btn-sm btn-warning" %></td>
-        <% end %>
+        <td class="d-flex justify-content-evenly">
+          <%= link_to("Check Lair", lair_path(@booking.lair), class: "text-dark text-decoration-none") %>
+          <% if policy(@booking).edit? %>
+            <%= link_to "Edit", edit_lair_booking_path(@booking.lair, @booking), class: "btn btn-sm btn-warning" %>
+          <% end %>
+        </td>
         <% if policy(@booking).confirm? %>
           <td>
             <% if @booking.accepted %>
