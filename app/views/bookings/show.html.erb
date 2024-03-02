@@ -1,42 +1,44 @@
-<h1>Bookings</h1>
-
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Lair</th>
-      <th>Check-in</th>
-      <th>Check-out</th>
-      <th>Status</th>
-      <th>Booking ID</th>
-    </tr>
-  </thead>
-  <tbody>
+<div class="m-4">
+  <h1>Bookings</h1>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Lair</th>
+        <th>Check-in</th>
+        <th>Check-out</th>
+        <th>Status</th>
+        <th>Booking ID</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
       <tr>
         <td><%= @booking.lair.title %></td>
         <td><%= @booking.start_date.strftime("%Y-%m-%d") %></td>
         <td><%= @booking.end_date.strftime("%Y-%m-%d") %></td>
         <td><%= @booking.accepted ? "Confirmed" : "Pending" %></td>
         <td><%= @booking.id %></td>
-        <td class="d-flex justify-content-evenly">
-          <%= link_to("Check Lair", lair_path(@booking.lair), class: "text-dark text-decoration-none") %>
+        <td class="btn-group d-flex justify-content-evenly">
+          <%= link_to("Check Lair", lair_path(@booking.lair), class: "btn btn-info", style: "width: 40px") %>
           <% if policy(@booking).edit? %>
-            <%= link_to "Edit", edit_lair_booking_path(@booking.lair, @booking), class: "btn btn-sm btn-warning" %>
+            <%= link_to "Edit", edit_lair_booking_path(@booking.lair, @booking), class: "btn btn-warning", style: "width: 40px" %>
+          <% end %>
+          <% if policy(@booking).confirm? %>
+            <td>
+              <% if @booking.accepted %>
+                <%= link_to "Cancel", confirm_lair_booking_path, data: { turbo_method: :patch, confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" %>
+              <% else %>
+                <%= link_to "Confirm", confirm_lair_booking_path, data: { turbo_method: :patch }, class: "btn btn-sm btn-success" %>
+              <% end %>
+            </td>
           <% end %>
         </td>
-        <% if policy(@booking).confirm? %>
-          <td>
-            <% if @booking.accepted %>
-              <%= link_to "Cancel", confirm_lair_booking_path, data: { turbo_method: :patch, confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" %>
-            <% else %>
-              <%= link_to "Confirm", confirm_lair_booking_path, data: { turbo_method: :patch }, class: "btn btn-sm btn-success" %>
-            <% end %>
-          </td>
-        <% end %>
       </tr>
-  </tbody>
-</table>
-<% if policy(@booking).confirm? %>
-  <%= link_to("Back to bookings", renter_index_user_bookings_path(current_user)) %>
-<% elsif policy(@booking).edit? %>
-  <%= link_to("Back to bookings", user_bookings_path(current_user)) %>
-<% end %>
+    </tbody>
+  </table>
+  <% if policy(@booking).confirm? %>
+    <%= link_to("Back to bookings", renter_index_user_bookings_path(current_user), class: "text-decoration-none") %>
+  <% elsif policy(@booking).edit? %>
+    <%= link_to("Back to bookings", user_bookings_path(current_user), class: "text-dark text-decoration-none") %>
+  <% end %>
+</div>
