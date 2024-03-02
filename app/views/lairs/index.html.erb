@@ -85,9 +85,63 @@
       width: 80%;
       margin: auto;
     }
+
+    /* Additional CSS styles for header icons */
+  .header-icons {
+    display: flex;
+    justify-content: center; /* Center the icons horizontally */
+    align-items: center;
+    flex-wrap: wrap; /* Allow icons to wrap to the next line if needed */
+    gap: 30px; /* Add more space between icons */
+    margin-top: 10px; /* Add more top margin for spacing */
+  }
+
+  .icon {
+    text-align: center; /* Center icon and description */
+    display: inline-block; /* Display icons inline */
+    width: 120px; /* Set a fixed width for each icon container */
+  }
+
+  .icon i {
+    font-size: 2em; /* Adjust icon size as needed */
+  }
+
+  .icon p {
+    margin-top: 7px; /* Add more space between icon and description */
+    font-size: 14px; /* Adjust description font size */
+  }
+
+
+
   </style>
 </head>
 <body>
+  <div class="header-icons">
+    <div class="icon">
+      <i class="fas fa-mountain"></i>
+      <p>Mountain</p>
+    </div>
+    <div class="icon">
+      <i class="fas fa-volcano"></i>
+      <p>Volcano</p>
+    </div>
+    <div class="icon">
+      <i class="fas fa-umbrella-beach"></i>
+      <p>Beach</p>
+    </div>
+    <div class="icon">
+      <i class="fas fa-earth-africa"></i>
+      <p>Moon</p>
+    </div>
+    <div class="icon">
+      <i class="fas fa-igloo"></i>
+      <p>Igloo</p>
+    </div>
+    <div class="icon">
+      <i class="fas fa-dungeon"></i>
+      <p>Dungeon</p>
+    </div>
+  </div>
 
 <div class="container">
   <h1 class="text-center my-4">All Lairbnb Lairs 😈</h1>
@@ -108,7 +162,7 @@
         <a class="carousel-control-prev" href="#carousel<%= lair.id %>" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
           <span class="sr-only">Previous</span>
-        </a>
+        </a>``
         <a class="carousel-control-next" href="#carousel<%= lair.id %>" role="button" data-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="sr-only">Next</span>
