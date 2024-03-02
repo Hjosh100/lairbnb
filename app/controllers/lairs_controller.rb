@@ -25,6 +25,12 @@ class LairsController < ApplicationController
   def show
     authorize @lair
     @booking = Booking.new
+    @markers = [{
+      lat: @lair.latitude,
+      lng: @lair.longitude,
+      info_window_html: render_to_string(partial: "info_window", locals: {lair: @lair}),
+      marker_html: render_to_string(partial: "marker")
+    }]
   end
 
   def new
