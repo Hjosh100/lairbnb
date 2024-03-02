@@ -1,40 +1,54 @@
-<main>
-  <h1>Renter Index</h1>
-  <div class="card-container d-flex flex-wrap">
+<div class="container-fluid mt-4 mb-4">
+  <h1 class="ms-3 mb-4">Interest in your properties</h1>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
     <% @bookings_for_user_lairs.each do |booking| %>
-      <div>
-        <div class="m-2 p-4 bg-secondary-subtle rounded-4 shadow", style="width: 300px;">
-          <!-- Other booking details -->
-          <p>
-            <% booking.lair.photos.each do |photo| %>
-              <%= cl_image_tag photo.key, height: 250, width: 250, crop: :fill, class: "small-photo"  %>
-            <% end %>
-            <div class="d-flex flex-column">
-            <h6 class="fw-bold">From <%= booking.user.first_name %> <%= booking.user.last_name %></h6>
-            <p> Accepted: <%= booking.accepted ? "yes" : "no" %></p>
-              <div class="d-flex">
-                <div class="mt-2 me-2 mb-2">
-                  <h6 class="fw-bold">Check-in</h6>
-                  <p><%= booking.start_date %></p>
+      <div class="col">
+        <%= link_to lair_booking_path(lair_id: booking.lair, id: booking), class: "card-link" do %>
+          <div class="card mx-auto bg-secondary-subtle shadow", style="width: 400px; height: 630px;">
+            <div class="card-body">
+              <h4 class="card-title mb-3 text-center fw-bold">From <strong><%= booking.user.first_name %> <%= booking.user.last_name %></strong></h4>
+              <div id="carousel<%= booking.id %>" class="carousel slide mb-3" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <% booking.lair.photos.each_with_index do |photo, index| %>
+                    <div class="carousel-item <%= 'active' if index == 0 %>">
+                      <%= cl_image_tag photo.key, width: 300, height: 300, class: "d-block w-100 rounded" %>
+                    </div>
+                  <% end %>
                 </div>
-                <div class="m-2">
-                  <h6 class="fw-bold">Check-out</h6>
-                  <p><%= booking.end_date %></p>
-                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carousel<%= booking.id %>" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carousel<%= booking.id %>" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
               </div>
-              <div>
-                <h4 class="fw-bold"><%= booking.lair.title %></h4>
-                <p><%= booking.lair.description %></p>
-                <p>Price: £<%= booking.lair.price %></p>
-                <p>Location: <%= booking.lair.location %></p>
-                <p>Category: <%= booking.lair.category %></p>
-                <p>Villain: <%= booking.lair.user.first_name %> <%= booking.lair.user.last_name %></p>
-                <%= link_to("Check", lair_booking_path(booking.lair, booking), class: "btn btn-dark text-opacity-50 ") %>
+              <div class="d-flex flex-column">
+              <p> Accepted: <%= booking.accepted ? "yes" : "no" %></p>
+                <div class="d-flex justify-content-between">
+                  <div class="mt-2 me-2 mb-2">
+                    <h6 class="fw-bold">Check-in</h6>
+                    <p><%= booking.start_date.strftime('%A, %d %B') %></p>
+                  </div>
+                  <div class="m-2">
+                    <h6 class="fw-bold">Check-out</h6>
+                    <p><%= booking.end_date.strftime('%A, %d %B') %></p>
+                  </div>
+                </div>
+                <div>
+                  <h4 class="fw-bold"><%= booking.lair.title %></h4>
+                  <%# <p><%= booking.lair.description </p>%>
+                  <p><strong>Total Cost:</strong> <%= number_to_currency(number_of_nights(booking.start_date, booking.end_date) * booking.lair.price, unit: '£', format: '%u%n GBP') %></p>
+                  <p><strong>Address:</strong> <%= booking.lair.location %></p>
+                  <%# <p>Category: <%= booking.lair.category </p>%>
+                  <%# <p>Villain: <%= booking.lair.user.first_name booking.lair.user.last_name</p> %>
+                </div>
               </div>
             </div>
-          </p>
-        </div>
+          </div>
+        <% end %>
       </div>
     <% end %>
   </div>
-</main>
+</div>
