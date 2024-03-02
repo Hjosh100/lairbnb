@@ -6,6 +6,7 @@
   <title>All Lairbnb Lairs</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
     /* Additional CSS styles */
     body {
@@ -33,13 +34,13 @@
     .btn-custom {
       background-color: black; /* Use Airbnb's brand color for buttons */
       color: white;
-      border-color: #FF385C;
-      border-radius: 20px; /* Add rounded corners to buttons */
+      border-color: black;
+      border-radius: 17px; /* Add rounded corners to buttons */
     }
 
     .btn-custom:hover {
-      background-color: #FF0B5B; /* Darken the button color on hover */
-      border-color: #FF0B5B;
+      background-color: gray; /* Darken the button color on hover */
+      border-color: gray;
     }
 
     .btn-container {
@@ -113,20 +114,25 @@
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
               </a>
-              <a class="carousel-control-next" href="#carousel<%= lair.id %>" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
-            </div>
-            <div class="card-body">
-              <h5 class="card-title lair-title"><%= lair.title %></h5>
-              <p class="card-text"><strong>Price:</strong> <span class="lair-price"><%= lair.price %></span></p>
-              <div class="btn-container">
-                <%= link_to "View Lair", lair_path(lair), class: "btn btn-custom" %>
-              </div>
-            </div>
-          </div>
-        </div>
+        <a class="carousel-control-prev" href="#carousel<%= lair.id %>" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel<%= lair.id %>" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+      <div class="card-body">
+      <div class="title-container">
+        <h5 class="card-title lair-title"><%= lair.title %></h5>
+        <p class="card-text"><strong></strong> <span class="star">&#9733;</span> <%= rand(2.0..5.0).round(2) %></p>
+      </div>
+        <p class="card-text"><strong>£</strong> <span class="lair-price"><%= lair.price %></span></p>
+    <div class="btn-container">
+        <%= link_to "View Lair", lair_path(lair), class: "btn btn-custom" %>
+      </div>
+    </div>
       <% end %>
     </div>
   </div>
