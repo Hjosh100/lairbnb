@@ -6,11 +6,16 @@
   <title>Show Lair</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
   <style>
     .lair-title {
       font-size: 32px;
       font-weight: bold;
       margin-bottom: 20px;
+      text-align: center;
+      font-family: 'Oswald', sans-serif;
     }
     .carousel-item img {
       max-height: 500px;
@@ -20,24 +25,36 @@
       margin-top: 30px;
     }
     .lair-details h2 {
-      font-size: 24px;
+      font-size: 40px;
       margin-top: 20px;
       margin-bottom: 10px;
       font-weight: bold;
+            font-family: 'Oswald', sans-serif;
+
     }
     .lair-details p {
       font-size: 18px;
       line-height: 1.5;
     }
     .btn-custom {
+      font-size: 18px;
       background-color: #f4f4f4;
       color: #333;
       border-color: #ccc;
+      border-radius: 5px;
+      padding: 100px 50px;
+      margin-top: align-items: center;
+      transition: background-color 0.2s ease-in-out;
     }
     .btn-custom:hover {
       background-color: #eaeaea;
       color: #333;
     }
+    .right-side-buttons {
+  /* Your desired styles for the buttons */
+  background-color: #007bff; /* Example: Change background color */
+  color: white; /* Example: Change text color */
+}
   </style>
 </head>
 <body>
@@ -67,12 +84,12 @@
 
       <!-- Lair Details -->
       <div class="lair-details">
+        <h2>Location:</h2>
+        <p><%= @lair.location %></p>
         <h2>Description:</h2>
         <p><%= @lair.description %></p>
         <h2>Price:</h2>
         <p><%= @lair.price %></p>
-        <h2>Location:</h2>
-        <p><%= @lair.location %></p>
         <h2>Category:</h2>
         <p><%= @lair.category %></p>
         <h2>Villain:</h2>
@@ -80,22 +97,20 @@
       </div>
     </div>
 
-    <div class="col-md-4">
+
+    <div class="col-md-4 d-flex justify-content-center align-items-center col-12 col-lg-4">
+      <div style="border: 1px solid rgb(221, 221, 221); border-radius: 12px; padding: 24px; box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;">
       <div class="text-center mt-4">
-        <%= link_to "Book", new_lair_booking_path(@lair, @booking), class: "btn btn-custom" %>
+
+
+        <%= link_to "Book", new_lair_booking_path(@lair, @booking), class: "btn btn-custom right-side-buttons" %>
       </div>
       <div class="text-center mt-4">
-        <% if policy(@lair).edit?  %>
-          <%= link_to "edit", edit_lair_path(@lair), class: "btn btn-custom" %>
-        <% end %>
-      </div>
-      <div class="text-center mt-4">
-        <% if policy(@lair).destroy?  %>
-          <%= link_to "Delete", lair_path(@lair),
-              method: :delete,
-              data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-custom"
-          %>
-        <% end %>
+        <%= link_to "Delete", lair_path(@lair),
+            method: :delete,
+            data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+        class: "btn btn-custom right-side-buttons" %>
+
       </div>
     </div>
   </div>
