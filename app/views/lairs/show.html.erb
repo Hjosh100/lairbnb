@@ -9,7 +9,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
-  <style>
+
+  <%# <style>
     .lair-title {
       font-size: 32px;
       font-weight: bold;
@@ -37,12 +38,12 @@
       line-height: 1.5;
     }
     .btn-custom {
-      font-size: 18px;
+      font-size: 15px;
       background-color: #f4f4f4;
       color: #333;
       border-color: #ccc;
       border-radius: 5px;
-      padding: 100px 50px;
+      padding: 10px 10px;
       margin-top: align-items: center;
       transition: background-color 0.2s ease-in-out;
     }
@@ -54,16 +55,28 @@
   /* Your desired styles for the buttons */
   background-color: #007bff; /* Example: Change background color */
   color: white; /* Example: Change text color */
-}
-  </style>
+} %>
+  <%# </style> %>
 </head>
 <body>
 
 <div class="container">
   <div class="row">
     <div class="col-md-8">
-      <h1 class="text-center lair-title"><%= @lair.title %></h1>
+      <div class="d-flex justify-content-between mt-4">
+        <h1 class="lair-title mr-auto"><%= @lair.title %></h1>
+        <div class="d-flex">
+          <%if current_user == @lair.user%>
+            <%= link_to "Delete", lair_path(@lair),
+              method: :delete,
+              data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+            class: "btn btn-custom right-side-buttons" %>
+          <% else %>
+            <%= link_to "Book", new_lair_booking_path(@lair, @booking), class: "btn btn-custom right-side-buttons" %>
+          <% end %>
 
+        </div>
+      </div>
       <div id="carouselLair" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <% @lair.photos.each_with_index do |photo, index| %>
@@ -98,21 +111,27 @@
     </div>
 
 
-    <div class="col-md-4 d-flex justify-content-center align-items-center col-12 col-lg-4">
+
+    <%# <div class="col-md-4 d-flex justify-content-center align-items-center col-12 col-lg-4">
       <div style="border: 1px solid rgb(221, 221, 221); border-radius: 12px; padding: 24px; box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;">
       <div class="text-center mt-4">
 
         <%= link_to "Book", new_lair_booking_path(@lair, @booking), class: "btn btn-custom right-side-buttons" %>
-      </div>
+      <%# </div>
       <div class="text-center mt-4">
         <%= link_to "Delete", lair_path(@lair),
             method: :delete,
             data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
         class: "btn btn-custom right-side-buttons" %>
-      </div>
+      <%# </div> %>
     </div>
   </div>
 </div>
+<div data-contoller="map"
+     id='map-container'
+     data-map-markers-value="<%= @markers.to_json %>"
+     data-map-api-key-value="<%= ENV['mapbox_api_key'] %>"
+     style='height: 600px;'></div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
