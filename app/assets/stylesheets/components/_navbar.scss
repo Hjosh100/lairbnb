@@ -11,3 +11,36 @@
   width: 150px;
   height: 80px;
 }
+
+/* Additional CSS styles for header icons */
+/* Additional CSS styles for header icons */
+.subtle-line {
+  border-top: 1px solid #ccc; /* Subtle line */
+  margin-top: 20px; /* Adjust the margin as needed */
+}
+
+.header-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* Allow icons to wrap to the next line if needed */
+  gap: 40px; /* Add more space between icons */
+}
+
+.icon {
+  text-align: center; /* Center icon and description */
+  transition: transform 0.3s; /* Add transition for hover effect */
+}
+
+.icon:hover {
+  transform: translateY(-5px); /* Move icon up on hover */
+}
+
+.icon i {
+  font-size: 2em; /* Adjust icon size as needed */
+}
+
+.icon p {
+  margin-top: 5px; /* Add some space between icon and description */
+  font-size: 14px; /* Adjust description font size */
+}

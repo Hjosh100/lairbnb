@@ -21,9 +21,9 @@
             <%= link_to "View Your Bookings", user_bookings_path(current_user), class: "nav-link" %>
           </li>
           <li class="nav-item dropdown">
-          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
-          </a>
+            <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
+            </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "New bookings", renter_index_user_bookings_path(current_user), class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
@@ -36,5 +36,35 @@
         <% end %>
       </ul>
     </div>
+  </div>
+</div>
+
+<div class="subtle-line"></div>
+
+<div class="header-icons">
+
+  <div class="icon">
+    <i class="fas fa-mountain"></i>
+    <p>Mountain</p>
+  </div>
+  <div class="icon">
+    <i class="fas fa-volcano"></i>
+    <p>Volcano</p>
+  </div>
+  <div class="icon">
+    <i class="fas fa-umbrella-beach"></i>
+    <p>Beach</p>
+  </div>
+  <div class="icon">
+    <i class="fas fa-earth-africa"></i>
+    <p>Planet</p>
+  </div>
+  <div class="icon">
+    <i class="fas fa-igloo"></i>
+    <p>Igloo</p>
+  </div>
+  <div class="icon">
+    <i class="fas fa-dungeon"></i>
+    <p>Dungeon</p>
   </div>
 </div>
